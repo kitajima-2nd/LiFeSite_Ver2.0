@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,200..900;1,200..900&family=Noto+Sans+JP:wght@100..900&display=swap');
+
+:root {
+  color-scheme: light;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-sans text-neutral-900 antialiased leading-relaxed;
+    background-image: url('/images/BackGrund_Image.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0.8); /* 白い半透明のオーバーレイ */
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display text-neutral-900 tracking-tight;
+  }
+
+  a {
+    @apply text-neutral-900 transition-colors duration-200;
+  }
+
+  a:hover {
+    @apply text-primary;
+  }
+}
+
+@layer utilities {
+  .fade-in-text {
+    visibility: hidden;
+    display: inline-block;
+    white-space: pre-line;
+  }
+
+  .char {
+    display: inline-block;
+    opacity: 0;
+    animation: fadeIn 0.4s ease forwards;
+  }
+}
+

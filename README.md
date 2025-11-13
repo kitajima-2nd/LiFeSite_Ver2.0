@@ -1,75 +1,88 @@
-# Next.js + TypeScript 莨∵･ｭ繧ｵ繧､繝医ユ繝ｳ繝励Ξ繝ｼ繝・
-縺薙・繝励Ο繧ｸ繧ｧ繧ｯ繝医・縲・撕逧ЗTML繝・Φ繝励Ξ繝ｼ繝医ｒ Next.js (App Router) 縺ｨ TypeScript 縺ｧ蜀肴ｧ狗ｯ峨＠縺溘ｂ縺ｮ縺ｧ縺吶・
-## 繧ｻ繝・ヨ繧｢繝・・
+# Next.js + TypeScript 企業向けホームページテンプレート
 
-### 1. 萓晏ｭ倬未菫ゅｒ繧､繝ｳ繧ｹ繝医・繝ｫ
+企業・ビジネス向けHTMLテンプレートを Next.js (App Router) と TypeScript で構築したものです。
 
-`ash
+## セットアップ
+
+### 1. 依存関係をインストール
+
+```bash
 npm install
-`
+```
 
-### 2. 髢狗匱繧ｵ繝ｼ繝舌・繧定ｵｷ蜍・
-`ash
+### 2. 開発サーバーを起動
+
+```bash
 npm run dev
-`
+```
 
-繝悶Λ繧ｦ繧ｶ縺ｧ http://localhost:3000 繧帝幕縺・※縺上□縺輔＞縲・
-### 3. 譛ｬ逡ｪ繝薙Ν繝・
-`ash
+ブラウザで http://localhost:3000 を開いて確認してください。
+
+### 3. ビルド
+
+```bash
 npm run build
-`
+```
 
-### 4. 譛ｬ逡ｪ繝薙Ν繝峨ｒ襍ｷ蜍・
-`ash
+### 4. ビルド結果を起動
+
+```bash
 npm run start
-`
+```
 
-## 繝励Ο繧ｸ繧ｧ繧ｯ繝域ｧ矩
+## プロジェクト構造
 
-`
+```
 src/
-笏懌楳笏 app/
-笏・  笏懌楳笏 layout.tsx          # 蜈ｱ騾壹Ξ繧､繧｢繧ｦ繝茨ｼ医・繝・ム繝ｼ/繝輔ャ繧ｿ繝ｼ縺ｪ縺ｩ・・笏・  笏懌楳笏 page.tsx            # 繝医ャ繝励・繝ｼ繧ｸ
-笏・  笏懌楳笏 company/page.tsx    # 莨夂､ｾ讎りｦ√・繝ｼ繧ｸ
-笏・  笏懌楳笏 contact/page.tsx    # 縺雁撫縺・粋繧上○繝壹・繧ｸ
-笏・  笏披楳笏 service/page.tsx    # 繧ｵ繝ｼ繝薙せ繝壹・繧ｸ
-笏懌楳笏 components/             # 蜀榊茜逕ｨ蜿ｯ閭ｽ縺ｪUI繧ｳ繝ｳ繝昴・繝阪Φ繝・笏・  笏懌楳笏 Header/
-笏・  笏懌楳笏 Footer/
-笏・  笏懌楳笏 SlideShow/
-笏・  笏披楳笏 ...
-笏懌楳笏 hooks/                  # 繧ｫ繧ｹ繧ｿ繝繝輔ャ繧ｯ
-笏懌楳笏 types/                  # 蝙句ｮ夂ｾｩ
-笏披楳笏 app/globals.css         # 繧ｰ繝ｭ繝ｼ繝舌Ν繧ｹ繧ｿ繧､繝ｫ
-`
+├── app/
+│   ├── layout.tsx          # ルートレイアウト（ヘッダー/フッター共通）
+│   ├── page.tsx            # トップページ
+│   ├── company/page.tsx    # 会社概要ページ
+│   ├── contact/page.tsx    # お問い合わせページ
+│   └── service/page.tsx    # サービスページ
+├── components/             # 再利用可能なUIコンポーネント
+│   ├── Header/
+│   ├── Footer/
+│   ├── SlideShow/
+│   └── ...
+├── hooks/                  # カスタムフック
+├── types/                  # 型定義
+└── app/globals.css         # グローバルスタイル
+```
 
-## 荳ｻ縺ｪ讖溯・
+## 主な機能
 
-- **Next.js App Router** 縺ｫ繧医ｋ繝ｫ繝ｼ繝・ぅ繝ｳ繧ｰ
-- **繝ｬ繧ｹ繝昴Φ繧ｷ繝悶ョ繧ｶ繧､繝ｳ**・医Δ繝舌う繝ｫ/繧ｿ繝悶Ξ繝・ヨ/繝・せ繧ｯ繝医ャ繝怜ｯｾ蠢懶ｼ・- **繧ｹ繝ｩ繧､繝峨す繝ｧ繝ｼ** 縺ｨ **繝輔ぉ繝ｼ繝峨う繝ｳ繧｢繝九Γ繝ｼ繧ｷ繝ｧ繝ｳ**
-- **繝上Φ繝舌・繧ｬ繝ｼ繝｡繝九Η繝ｼ**・医Δ繝舌う繝ｫ逕ｨ繝翫ン繧ｲ繝ｼ繧ｷ繝ｧ繝ｳ・・- **繧ｹ繝繝ｼ繧ｹ繧ｹ繧ｯ繝ｭ繝ｼ繝ｫ** 縺ｨ **繝壹・繧ｸ繝医ャ繝励・繧ｿ繝ｳ**
-- TypeScript 縺ｫ繧医ｋ蝙句ｮ牙・縺ｪ髢狗匱
+- **Next.js App Router** による最新のルーティング
+- **レスポンシブデザイン** によるモバイル/タブレット/デスクトップ対応
+- **アニメーション** によるスムーズなUI体験
+- **TypeScript** による型安全な開発
 
-## 繧ｫ繧ｹ繧ｿ繝槭う繧ｺ譁ｹ豕・
-### 莨夂､ｾ蜷阪・繝｡繝九Η繝ｼ縺ｮ螟画峩
-src/app/layout.tsx 縺ｮ menuItems 縺ｨ companyName 繧堤ｷｨ髮・＠縺ｦ縺上□縺輔＞縲・
-### 繧ｹ繝ｩ繧､繝峨す繝ｧ繝ｼ繝ｻ諠・ｱ繧ｻ繧ｯ繧ｷ繝ｧ繝ｳ繝ｻ縺顔衍繧峨○縺ｮ螟画峩
-src/app/page.tsx 縺ｮ slides / infoItems / 
-ewsItems 驟榊・繧堤ｷｨ髮・＠縺ｦ縺上□縺輔＞縲・
-### 繧ｵ繝ｼ繝薙せ蜀・ｮｹ縺ｮ螟画峩
-src/app/service/page.tsx 縺ｮ serviceItems 繧堤ｷｨ髮・＠縺ｦ縺上□縺輔＞縲・
-### 莨夂､ｾ讎りｦ√・縺雁撫縺・粋繧上○繝輔か繝ｼ繝
+## カスタマイズ方法
+
+### 会社情報・メニューの変更
+src/app/layout.tsx の menuItems と companyName を変更してください。
+
+### トップページのコンテンツ変更
+src/app/page.tsx の slides / infoItems / newsItems 配列を変更してください。
+
+### サービス内容の変更
+src/app/service/page.tsx の serviceItems を変更してください。
+
+### 会社概要・お問い合わせページ
 - src/app/company/page.tsx
 - src/app/contact/page.tsx
 
-### 逕ｻ蜒上・霑ｽ蜉
-public/images/ 縺ｫ逕ｻ蜒上ｒ驟咲ｽｮ縺励√ヱ繧ｹ・井ｾ・ /images/your-image.jpg・峨ｒ蜷・さ繝ｳ繝昴・繝阪Φ繝医〒蜿ら・縺励※縺上□縺輔＞縲・
-## 謚陦薙せ繧ｿ繝・け
+### 画像の追加
+public/images/ に画像を追加して、/images/your-image.jpg としてコンポーネントで使用してください。
+
+## 使用技術
 
 - Next.js 14
 - React 18
 - TypeScript 5
-- ESLint (Next.js 謗ｨ螂ｨ險ｭ螳・
+- ESLint (Next.js 推奨設定)
 
-## 繝｡繝｢
+## 注意
 
-- 逕ｻ蜒上ヵ繧｡繧､繝ｫ繧偵さ繝斐・縺吶ｋ縺ｫ縺ｯ setup-images.ps1 繧貞茜逕ｨ縺ｧ縺阪∪縺吶・- 蜈・ユ繝ｳ繝励Ξ繝ｼ繝医・繝ｩ繧､繧ｻ繝ｳ繧ｹ縺ｫ蠕薙▲縺ｦ縺泌茜逕ｨ縺上□縺輔＞縲・
+- 画像ファイルを追加する場合は setup-images.ps1 を実行してください。
+- スライドショーの画像やコンテンツを変更する場合は、各コンポーネントを編集してください。

@@ -10,4 +10,3 @@ if (Test-Path "images") {
 } else {
     Write-Host "imagesディレクトリが見つかりません。"
 }
-

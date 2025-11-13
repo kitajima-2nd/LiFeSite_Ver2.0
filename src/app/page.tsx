@@ -143,7 +143,7 @@ export default function HomePage() {
             formData={formData}
             onFormChange={handleChange}
             onFormSubmit={handleSubmit}
-          />
+                  />
         </SectionContainer>
 
         {/* News Section（お知らせ） */}

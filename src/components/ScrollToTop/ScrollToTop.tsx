@@ -1,20 +1,44 @@
+/**
+ * スクロールトップボタンコンポーネント
+ * 
+ * このコンポーネントは、ページの下部にスクロールした時に表示される
+ * 「ページトップへ戻る」ボタンを表示します。
+ * 
+ * 主な機能：
+ * - スクロール位置が320pxを超えた時にボタンを表示
+ * - クリックでページトップへスムーズスクロール
+ * - フェードイン/フェードアウトのアニメーション
+ * - アクセシビリティ対応（aria-label）
+ * 
+ * 仕様：
+ * - ボタンは画面右下に固定表示（fixed）
+ * - スクロール位置に応じて表示/非表示を切り替え
+ */
 'use client';
 
 import React, { useEffect, useState } from 'react';
 
 export const ScrollToTop: React.FC = () => {
+  // ボタンの表示/非表示を管理
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
+  /**
+   * スクロール位置を監視して、ボタンの表示/非表示を切り替える
+   * スクロール位置が320pxを超えた場合にボタンを表示
+   */
   useEffect(() => {
     const toggleVisibility = () => {
       setIsVisible(window.scrollY > 320);
     };
 
     window.addEventListener('scroll', toggleVisibility, { passive: true });
-    toggleVisibility();
+    toggleVisibility(); // 初回実行
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
 
+  /**
+   * ページトップへスムーズスクロールする関数
+   */
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };

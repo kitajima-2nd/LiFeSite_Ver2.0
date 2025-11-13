@@ -1,3 +1,18 @@
+/**
+ * お知らせセクションコンポーネント
+ * 
+ * このコンポーネントは、「お知らせ」セクションを表示します。
+ * 
+ * 主な機能：
+ * - タイトルとサブタイトルの表示
+ * - お知らせアイテムをリスト形式で表示
+ * - 日付、カテゴリ、内容を表示
+ * - カテゴリに応じたバッジの色分け（重要、サービス、その他）
+ * 
+ * @param title - セクションのタイトル
+ * @param subtitle - セクションのサブタイトル（オプション）
+ * @param newsItems - 表示するお知らせアイテムの配列
+ */
 import React from 'react';
 import { NewsItem } from '../../types';
 import { FadeInText } from '../FadeInText/FadeInText';
@@ -8,13 +23,22 @@ interface NewsSectionProps {
   newsItems: NewsItem[];
 }
 
+/**
+ * お知らせアイテムのカテゴリに応じたバッジのCSSクラスを取得する関数
+ * 
+ * @param item - お知らせアイテム
+ * @returns バッジに適用するCSSクラス名
+ */
 const getBadgeClasses = (item: NewsItem) => {
+  // 重要なお知らせは赤色
   if (item.isImportant) {
     return 'bg-red-500/90 text-white';
   }
+  // サービスカテゴリはプライマリカラー
   if (item.category === 'サービス') {
     return 'bg-primary text-white';
   }
+  // その他はグレー
   return 'bg-neutral-200 text-neutral-700';
 };
 

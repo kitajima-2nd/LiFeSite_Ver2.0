@@ -1,3 +1,18 @@
+/**
+ * スライドショーコンポーネント
+ * 
+ * このコンポーネントは、トップページのヒーローセクションとして使用される
+ * スライドショーを表示します。
+ * 
+ * 主な機能：
+ * - 複数のスライドを自動的に切り替え表示
+ * - 動画と画像の両方に対応
+ * - スライドインジケーターの表示
+ * - フェードイン/フェードアウトのアニメーション
+ * 
+ * @param slides - スライドアイテムの配列（タイトル、説明、動画/画像URLなど）
+ * @param interval - スライドの切り替え間隔（ミリ秒、デフォルト: 4000ms）
+ */
 'use client';
 
 import React from 'react';
@@ -11,6 +26,8 @@ interface SlideShowProps {
 }
 
 export const SlideShow: React.FC<SlideShowProps> = ({ slides, interval = 4000 }) => {
+  // スライドショーの自動再生を制御するカスタムフック
+  // 指定された間隔でスライドを自動的に切り替えます
   const { currentIndex } = useSlideShow({
     slideCount: slides.length,
     interval,

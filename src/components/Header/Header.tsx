@@ -1,3 +1,18 @@
+/**
+ * ヘッダーコンポーネント
+ * 
+ * このコンポーネントは、サイト全体で使用される固定ヘッダーを表示します。
+ * 
+ * 主な機能：
+ * - ロゴと会社名の表示
+ * - ナビゲーションメニューの表示（デスクトップ/モバイル対応）
+ * - ハンバーガーメニューの開閉制御
+ * - メニューが開いている間、背景のスクロールを無効化
+ * 
+ * @param companyName - 会社名（ロゴの横に表示）
+ * @param logoUrl - ロゴ画像のURL（オプション）
+ * @param menuItems - ナビゲーションメニューのアイテム配列
+ */
 'use client';
 
 import React, { useEffect, useState } from 'react';
@@ -14,8 +29,11 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ companyName, logoUrl, menuItems }) => {
+  // モバイルメニューの開閉状態を管理
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
+  // メニューが開いている間、背景のスクロールを無効化
+  // これにより、メニューが開いている時に背景がスクロールしないようにします
   useEffect(() => {
     document.body.classList.toggle('overflow-hidden', isMenuOpen);
     return () => {
@@ -23,10 +41,16 @@ export const Header: React.FC<HeaderProps> = ({ companyName, logoUrl, menuItems 
     };
   }, [isMenuOpen]);
 
+  /**
+   * ハンバーガーメニューの開閉を切り替える関数
+   */
   const handleMenuToggle = () => {
     setIsMenuOpen((prev) => !prev);
   };
 
+  /**
+   * メニュー内のリンクがクリックされた時にメニューを閉じる関数
+   */
   const handleLinkClick = () => {
     setIsMenuOpen(false);
   };

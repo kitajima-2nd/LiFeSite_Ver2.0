@@ -1,3 +1,17 @@
+/**
+ * ナビゲーションコンポーネント
+ * 
+ * このコンポーネントは、ヘッダー内のナビゲーションメニューを表示します。
+ * 
+ * 主な機能：
+ * - デスクトップ表示：ホバーでドロップダウンメニューを表示
+ * - モバイル表示：アコーディオン形式でメニューを展開
+ * - サブメニュー（children）のサポート
+ * 
+ * @param items - ナビゲーションメニューのアイテム配列
+ * @param isOpen - モバイルメニューが開いているかどうか
+ * @param onLinkClick - リンクがクリックされた時に呼ばれるコールバック関数
+ */
 'use client';
 
 import React, { useState } from 'react';
@@ -11,12 +25,24 @@ interface NavigationProps {
 }
 
 export const Navigation: React.FC<NavigationProps> = ({ items, isOpen, onLinkClick }) => {
+  // モバイル表示で開いているドロップダウンのインデックスを管理
+  // nullの場合はすべて閉じている状態
   const [mobileDropdownIndex, setMobileDropdownIndex] = useState<number | null>(null);
 
+  /**
+   * モバイル表示でドロップダウンの開閉を切り替える関数
+   * 同じインデックスがクリックされた場合は閉じる、異なる場合は開く
+   * 
+   * @param index - クリックされたメニューアイテムのインデックス
+   */
   const toggleMobileDropdown = (index: number) => {
     setMobileDropdownIndex((prev) => (prev === index ? null : index));
   };
 
+  /**
+   * ナビゲーションリンクがクリックされた時の処理
+   * ドロップダウンを閉じ、親コンポーネントに通知
+   */
   const handleNavigation = () => {
     setMobileDropdownIndex(null);
     onLinkClick();

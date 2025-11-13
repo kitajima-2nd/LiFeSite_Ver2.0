@@ -1,3 +1,17 @@
+/**
+ * フッターコンポーネント
+ * 
+ * このコンポーネントは、サイト全体で使用されるフッターを表示します。
+ * 
+ * 主な機能：
+ * - ナビゲーションメニューの表示（親メニューと子メニューをフラット化）
+ * - コピーライトの表示
+ * - レスポンシブ対応（モバイル：縦並び、デスクトップ：横並び）
+ * 
+ * @param companyName - 会社名（コピーライトに表示）
+ * @param menuItems - ナビゲーションメニューのアイテム配列
+ * @param showTemplateCredit - テンプレートクレジットを表示するかどうか（未使用）
+ */
 import React from 'react';
 import Link from 'next/link';
 import { MenuItem } from '../../types';
@@ -13,11 +27,15 @@ export const Footer: React.FC<FooterProps> = ({
   menuItems,
   showTemplateCredit = true,
 }) => {
+  // メニューアイテムをフラット化（親メニューと子メニューを1つの配列に統合）
+  // これにより、フッターにはすべてのメニューリンクが表示されます
   const flatMenuItems: MenuItem[] = [];
   menuItems.forEach((item) => {
+    // 親メニューにパスがある場合は追加
     if (item.path) {
       flatMenuItems.push(item);
     }
+    // 子メニューがある場合は、パスを持つ子メニューのみを追加
     if (item.children) {
       flatMenuItems.push(
         ...item.children.filter((child) => child.path)

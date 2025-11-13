@@ -33,20 +33,20 @@ export const FadeInText: React.FC<FadeInTextProps> = ({ children, className = ''
   
   // アニメーションが既に実行されたかを管理（1回のみ実行するため）
   const [animated, setAnimated] = useState<boolean>(false);
-  const textRef = useRef<HTMLSpanElement>(null);
 
   /**
    * テキストを1文字ずつ分割してアニメーションを適用する処理
    * 要素が画面内に入り、まだアニメーションが実行されていない場合に実行
    */
   useEffect(() => {
-    if (isIntersecting && !animated && textRef.current) {
-      const text = textRef.current.textContent || '';
+    const element = (elementRef as React.MutableRefObject<HTMLElement | null>).current;
+    if (isIntersecting && !animated && element) {
+      const text = element.textContent || '';
       if (!text) return;
       
       // 既存の内容をクリア
-      textRef.current.textContent = '';
-      textRef.current.innerHTML = '';
+      element.textContent = '';
+      element.innerHTML = '';
       
       // テキストを1文字ずつ分割して、各文字をspan要素でラップ
       const fragment = document.createDocumentFragment();
@@ -58,19 +58,17 @@ export const FadeInText: React.FC<FadeInTextProps> = ({ children, className = ''
         fragment.appendChild(span);
       }
 
-      textRef.current.appendChild(fragment);
-      textRef.current.style.visibility = 'visible';
+      element.appendChild(fragment);
+      element.style.visibility = 'visible';
       setAnimated(true); // アニメーション実行済みフラグを立てる
     }
-  }, [isIntersecting, animated]);
+  }, [isIntersecting, animated, elementRef]);
 
   return (
     <span
       ref={(el) => {
-        if (el) {
-          (elementRef as React.MutableRefObject<HTMLElement | null>).current = el;
-          textRef.current = el;
-        }
+        // elementRefに要素を設定
+        (elementRef as React.MutableRefObject<HTMLElement | null>).current = el;
       }}
       className={`fade-in-text ${className}`}
     >

@@ -18,7 +18,7 @@ export const SlideShow: React.FC<SlideShowProps> = ({ slides, interval = 4000 })
   });
 
   return (
-    <aside className="relative min-h-screen snap-start w-screen overflow-hidden bg-neutral-900 text-white shadow-2xl shadow-primary/30">
+    <aside className="relative min-h-screen w-screen overflow-hidden bg-neutral-900 text-white shadow-2xl shadow-primary/30">
       {slides.map((slide, index) => (
         <div
           key={slide.id}

@@ -7,7 +7,7 @@ interface FadeInSectionProps {
   className?: string;
   delay?: number;
   opacity?: number; // 外部から制御する場合
-  onIntersectionChange?: (is50PercentVisible: boolean) => void; // 50%表示の検出を親に通知
+  onIntersectionChange?: (is30PercentVisible: boolean) => void; // 30%表示の検出を親に通知
   isFixed?: boolean; // セクションを固定するかどうか
 }
 
@@ -55,17 +55,17 @@ export const FadeInSection = forwardRef<FadeInSectionRef, FadeInSectionProps>(({
     };
   }, [controlledOpacity]);
 
-  // 50%表示の検出（外部制御時も動作）
+  // 30%表示の検出（外部制御時も動作）
   useEffect(() => {
     const element = elementRef.current;
     if (!element || !onIntersectionChange) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        onIntersectionChange(entry.intersectionRatio >= 0.5);
+        onIntersectionChange(entry.intersectionRatio >= 0.3);
       },
       {
-        threshold: [0, 0.5, 1],
+        threshold: [0, 0.3, 1],
         rootMargin: '0px'
       }
     );
@@ -99,7 +99,7 @@ export const FadeInSection = forwardRef<FadeInSectionRef, FadeInSectionProps>(({
         style={{ 
           opacity: opacity,
           transitionDelay: `${delay}ms`,
-          transitionDuration: '1000ms',
+          transitionDuration: '300ms',
           transitionProperty: 'opacity',
           transitionTimingFunction: 'ease-in-out',
           ...(isFixed ? {

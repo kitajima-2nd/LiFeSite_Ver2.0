@@ -5,7 +5,6 @@
  * 会社詳細情報とGoogleマップを表示します。
  */
 import React from 'react';
-import { FadeInText } from '../FadeInText/FadeInText';
 
 interface CompanyDetail {
   label: string;
@@ -15,17 +14,19 @@ interface CompanyDetail {
 interface CompanySectionProps {
   companyDetails: CompanyDetail[];
   businessContents: string[];
+  isVisible?: boolean; // セクションが表示されているかどうか（固定ビューで使用）
 }
 
 export const CompanySection: React.FC<CompanySectionProps> = ({
   companyDetails,
   businessContents,
+  isVisible,
 }) => {
   return (
     <section id="company" className="flex w-full flex-col items-center justify-center gap-10 py-24">
       <header className="text-center">
         <h2 className="text-3xl font-semibold text-neutral-900 md:text-4xl">
-          <FadeInText>Company</FadeInText>
+          Company
         </h2>
         <p className="mt-3 text-sm uppercase tracking-[0.3em] text-neutral-500 md:text-base">
           会社概要

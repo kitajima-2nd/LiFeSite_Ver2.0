@@ -118,81 +118,90 @@ export const useSectionScroll = (
      * 4. 現在のセクションと異なる場合、フェードアウト→フェードインの順で切り替え
      */
     const handleScroll = () => {
-      // SlideShowが表示されている場合はすべて非表示
-      if (isSlideShowVisibleRef.current) {
+        // SlideShowが表示されている場合はすべて非表示
+        if (isSlideShowVisibleRef.current) {
+          const currentIndex = currentSectionIndexRef.current;
+          if (currentIndex !== null) {
+            setSectionOpacities((prev) => {
+              const newOpacities = [...prev];
+              newOpacities[currentIndex] = 0;
+              return newOpacities;
+            });
+            setCurrentSectionIndex(null);
+            setIsTransitioning(false);
+          }
+          return;
+        }
+
+        // トランジション中は処理をスキップ（重複処理を防ぐ）
+        if (isTransitioningRef.current) {
+          return;
+        }
+
+        const targetIndex = calculateTargetSection();
+        if (targetIndex === null) {
+          return;
+        }
+
         const currentIndex = currentSectionIndexRef.current;
-        if (currentIndex !== null) {
-          setSectionOpacities((prev) => {
-            const newOpacities = [...prev];
-            newOpacities[currentIndex] = 0;
-            return newOpacities;
-          });
-          setCurrentSectionIndex(null);
-          setIsTransitioning(false);
-        }
-        return;
-      }
 
-      // トランジション中は処理をスキップ（重複処理を防ぐ）
-      if (isTransitioningRef.current) return;
+        // 現在のセクションと異なる場合のみ切り替え
+        if (currentIndex !== targetIndex) {
+          setIsTransitioning(true);
 
-      const targetIndex = calculateTargetSection();
-      if (targetIndex === null) return;
-
-      const currentIndex = currentSectionIndexRef.current;
-
-      // 現在のセクションと異なる場合のみ切り替え
-      if (currentIndex !== targetIndex) {
-        setIsTransitioning(true);
-
-        // 既存のタイムアウトをクリア（連続スクロール時の重複を防ぐ）
-        if (transitionTimeoutRef.current) {
-          clearTimeout(transitionTimeoutRef.current);
-          transitionTimeoutRef.current = null;
-        }
-
-        // 現在のセクションをフェードアウト
-        if (currentIndex !== null) {
-          setSectionOpacities((prev) => {
-            const newOpacities = [...prev];
-            newOpacities[currentIndex] = 0;
-            return newOpacities;
-          });
-
-          // 0.5秒後に次のセクションをフェードイン（CSSトランジション時間に合わせる）
-          transitionTimeoutRef.current = setTimeout(() => {
-            // トランジション完了時に再度スクロール位置をチェック
-            // （スクロールが続いている場合に備える）
-            const latestTargetIndex = calculateTargetSection();
-            if (latestTargetIndex !== null) {
-              setSectionOpacities((prev) => {
-                const newOpacities = [...prev];
-                newOpacities[latestTargetIndex] = 1;
-                return newOpacities;
-              });
-              setCurrentSectionIndex(latestTargetIndex);
-              setIsTransitioning(false);
-              // トランジション完了後、再度スクロール位置をチェック
-              // （高速スクロール時の見逃しを防ぐ）
-              setTimeout(() => {
-                handleScroll();
-              }, 0);
-            } else {
-              setIsTransitioning(false);
-            }
+          // 既存のタイムアウトをクリア（連続スクロール時の重複を防ぐ）
+          if (transitionTimeoutRef.current) {
+            clearTimeout(transitionTimeoutRef.current);
             transitionTimeoutRef.current = null;
-          }, 500); // トランジション時間（0.5s）に合わせる
+          }
+
+          // 現在のセクションをフェードアウト
+          if (currentIndex !== null) {
+            setSectionOpacities((prev) => {
+              const newOpacities = [...prev];
+              newOpacities[currentIndex] = 0;
+              return newOpacities;
+            });
+
+            // 0.5秒後に次のセクションをフェードイン（CSSトランジション時間に合わせる）
+            transitionTimeoutRef.current = setTimeout(() => {
+              // トランジション完了時に再度スクロール位置をチェック
+              // （スクロールが続いている場合に備える）
+              const latestTargetIndex = calculateTargetSection();
+              if (latestTargetIndex !== null) {
+                setSectionOpacities((prev) => {
+                  const newOpacities = [...prev];
+                  newOpacities[latestTargetIndex] = 1;
+                  return newOpacities;
+                });
+                setCurrentSectionIndex(latestTargetIndex);
+                setIsTransitioning(false);
+              } else {
+                setIsTransitioning(false);
+              }
+              transitionTimeoutRef.current = null;
+            }, 500); // トランジション時間（0.5s）に合わせる
+          } else {
+            // 初回表示時は即座に表示（フェードアウト不要）
+            setSectionOpacities((prev) => {
+              const newOpacities = [...prev];
+              newOpacities[targetIndex] = 1;
+              return newOpacities;
+            });
+            setCurrentSectionIndex(targetIndex);
+            setIsTransitioning(false);
+          }
         } else {
-          // 初回表示時は即座に表示（フェードアウト不要）
+          // セクション変更なしの場合でも、opacityが1でない場合は1に設定
           setSectionOpacities((prev) => {
-            const newOpacities = [...prev];
-            newOpacities[targetIndex] = 1;
-            return newOpacities;
+            if (prev[targetIndex] !== 1) {
+              const newOpacities = [...prev];
+              newOpacities[targetIndex] = 1;
+              return newOpacities;
+            }
+            return prev;
           });
-          setCurrentSectionIndex(targetIndex);
-          setIsTransitioning(false);
         }
-      }
     };
 
     // 初回実行（ページ読み込み時に適切なセクションを表示）

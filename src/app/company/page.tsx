@@ -1,5 +1,4 @@
-﻿import { FadeInText } from '../../components/FadeInText/FadeInText';
-
+﻿
 const companyDetails = [
   { label: '会社名', value: '株式会社LiFe' },
   { label: '所在地', value: '東京都品川区西五反田1丁目28-4 田口ビル3F' },
@@ -16,7 +15,7 @@ export default function CompanyPage() {
       <section className="flex flex-col gap-10">
         <header className="text-center">
           <h2 className="text-3xl font-semibold text-neutral-900 md:text-4xl">
-            <FadeInText>Company</FadeInText>
+            Company
           </h2>
           <p className="mt-3 text-sm uppercase tracking-[0.3em] text-neutral-500 md:text-base">
             会社概要

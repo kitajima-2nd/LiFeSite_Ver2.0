@@ -15,12 +15,12 @@
  */
 import React from 'react';
 import { NewsItem } from '../../types';
-import { FadeInText } from '../FadeInText/FadeInText';
 
 interface NewsSectionProps {
   title: string;
   subtitle?: string;
   newsItems: NewsItem[];
+  isVisible?: boolean; // セクションが表示されているかどうか（固定ビューで使用）
 }
 
 /**
@@ -42,12 +42,12 @@ const getBadgeClasses = (item: NewsItem) => {
   return 'bg-neutral-200 text-neutral-700';
 };
 
-export const NewsSection: React.FC<NewsSectionProps> = ({ title, subtitle, newsItems }) => {
+export const NewsSection: React.FC<NewsSectionProps> = ({ title, subtitle, newsItems, isVisible }) => {
   return (
     <section className="mx-auto mt-24 max-w-5xl px-6 md:px-0">
       <header className="text-center">
         <h2 className="text-3xl font-semibold text-neutral-900 md:text-4xl">
-          <FadeInText>{title}</FadeInText>
+          {title}
         </h2>
         {subtitle && (
           <p className="mt-3 text-sm uppercase tracking-[0.3em] text-neutral-500 md:text-base">

@@ -16,7 +16,7 @@
  */
 'use client';
 
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { SlideShow } from '../components/SlideShow/SlideShow';
 import { InfoSection } from '../components/InfoSection/InfoSection';
 import { NewsSection } from '../components/NewsSection/NewsSection';
@@ -56,6 +56,7 @@ export default function HomePage() {
     sectionMarkersRef,
     isSlideShowVisible
   );
+
 
   // フッターの高さを取得（セクションとフッターの重なりを防ぐため）
   const footerHeight = useFooterHeight();
@@ -120,13 +121,21 @@ export default function HomePage() {
         {/* Information Section（ご案内） */}
         <SectionContainer opacity={sectionOpacities[0]}>
           <div className="flex items-center justify-center py-24">
-            <InfoSection title="Information" subtitle="ご案内" items={infoItems} />
+            <InfoSection 
+              title="Information" 
+              subtitle="What is LiFe?" 
+              items={infoItems}
+              isVisible={sectionOpacities[0] > 0}
+            />
           </div>
         </SectionContainer>
 
         {/* Service Section（サービスのご案内） */}
         <SectionContainer opacity={sectionOpacities[1]}>
-          <ServiceSection serviceItems={serviceItems} />
+          <ServiceSection 
+            serviceItems={serviceItems}
+            isVisible={sectionOpacities[1] > 0}
+          />
         </SectionContainer>
 
         {/* Company Section（会社概要） */}
@@ -134,6 +143,7 @@ export default function HomePage() {
           <CompanySection
             companyDetails={companyDetails}
             businessContents={businessContents}
+            isVisible={sectionOpacities[2] > 0}
           />
         </SectionContainer>
 
@@ -143,7 +153,8 @@ export default function HomePage() {
             formData={formData}
             onFormChange={handleChange}
             onFormSubmit={handleSubmit}
-                  />
+            isVisible={sectionOpacities[3] > 0}
+          />
         </SectionContainer>
 
         {/* News Section（お知らせ） */}
@@ -153,7 +164,12 @@ export default function HomePage() {
         */}
         <SectionContainer opacity={sectionOpacities[4]} top="35%">
           <div className="flex items-center justify-center py-20">
-            <NewsSection title="What's New" subtitle="お知らせ" newsItems={newsItems} />
+            <NewsSection 
+              title="What's New" 
+              subtitle="お知らせ" 
+              newsItems={newsItems}
+              isVisible={sectionOpacities[4] > 0}
+            />
           </div>
         </SectionContainer>
       </div>

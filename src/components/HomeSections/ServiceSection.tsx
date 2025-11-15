@@ -6,19 +6,19 @@
  */
 import React from 'react';
 import Image from 'next/image';
-import { FadeInText } from '../FadeInText/FadeInText';
 import { InfoItem } from '../../types';
 
 interface ServiceSectionProps {
   serviceItems: InfoItem[];
+  isVisible?: boolean; // セクションが表示されているかどうか（固定ビューで使用）
 }
 
-export const ServiceSection: React.FC<ServiceSectionProps> = ({ serviceItems }) => {
+export const ServiceSection: React.FC<ServiceSectionProps> = ({ serviceItems, isVisible }) => {
   return (
     <section id="service" className="flex w-full flex-col items-center justify-center gap-10 py-24">
       <header className="text-center">
         <h2 className="text-3xl font-semibold text-neutral-900 md:text-4xl">
-          <FadeInText>Service</FadeInText>
+          Service
         </h2>
         <p className="mt-3 text-sm uppercase tracking-[0.3em] text-neutral-500 md:text-base">
           サービスのご案内

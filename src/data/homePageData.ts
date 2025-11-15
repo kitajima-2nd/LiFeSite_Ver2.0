@@ -14,8 +14,8 @@ import { SlideItem, InfoItem, NewsItem } from '../types';
 export const slides: SlideItem[] = [
   {
     id: 1,
-    title: '挑戦を楽しむ。',
-    description: '限界を超えて、前進。常に新しい挑戦を求め、未知の領域に挑む企業です。',
+    title: 'NO LiFe NO Solution',
+    description: '技術で挑戦し、情報で変革を。',
     videoUrl: '/videos/Top動画_1280x720.mov',
     linkUrl: '#service',
   },

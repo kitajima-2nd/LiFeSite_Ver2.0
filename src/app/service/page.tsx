@@ -1,5 +1,4 @@
 ﻿import Image from 'next/image';
-import { FadeInText } from '../../components/FadeInText/FadeInText';
 import { InfoItem } from '../../types';
 
 const serviceItems: InfoItem[] = [
@@ -39,7 +38,7 @@ export default function ServicePage() {
       <section className="flex flex-col gap-10">
         <header className="text-center">
           <h2 className="text-3xl font-semibold text-neutral-900 md:text-4xl">
-            <FadeInText>Service</FadeInText>
+            Service
           </h2>
           <p className="mt-3 text-sm uppercase tracking-[0.3em] text-neutral-500 md:text-base">
             サービスのご案内

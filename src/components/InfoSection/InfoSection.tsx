@@ -19,27 +19,23 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { InfoItem } from '../../types';
-import { FadeInText } from '../FadeInText/FadeInText';
 
 interface InfoSectionProps {
   title: string;
   subtitle?: string;
   items: InfoItem[];
+  isVisible?: boolean; // セクションが表示されているかどうか（固定ビューで使用）
 }
 
-export const InfoSection: React.FC<InfoSectionProps> = ({ title, subtitle, items }) => {
+export const InfoSection: React.FC<InfoSectionProps> = ({ title, subtitle, items, isVisible }) => {
   return (
-    <section className="relative isolate overflow-hidden rounded-3xl bg-primary text-primary-foreground shadow-card">
-      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/20 to-transparent opacity-40" />
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white/20 to-transparent opacity-40" />
-
-      <div className="relative mx-auto flex max-w-6xl flex-col gap-12 px-6 py-14 md:px-10 md:py-20">
-        <header className="text-center">
-          <h2 className="text-3xl font-semibold md:text-4xl">
-            <FadeInText>{title}</FadeInText>
+    <section className="relative mx-auto flex max-w-6xl flex-col gap-12 px-6 py-14 md:px-10 md:py-20">
+        <header className="">
+          <h2 className="text-9xl font-semibold md:text-9xl">
+            {title}
           </h2>
           {subtitle && (
-            <p className="mt-3 text-sm uppercase tracking-[0.4em] text-white/70 md:text-base">
+            <p className="text-white/70">
               {subtitle}
             </p>
           )}
@@ -79,7 +75,6 @@ export const InfoSection: React.FC<InfoSectionProps> = ({ title, subtitle, items
             </article>
           ))}
         </div>
-      </div>
     </section>
   );
 };

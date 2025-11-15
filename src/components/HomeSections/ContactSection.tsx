@@ -5,7 +5,6 @@
  * お問い合わせフォームを表示します。
  */
 import React from 'react';
-import { FadeInText } from '../FadeInText/FadeInText';
 
 interface ContactFormData {
   name: string;
@@ -17,18 +16,20 @@ interface ContactSectionProps {
   formData: ContactFormData;
   onFormChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   onFormSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  isVisible?: boolean; // セクションが表示されているかどうか（固定ビューで使用）
 }
 
 export const ContactSection: React.FC<ContactSectionProps> = ({
   formData,
   onFormChange,
   onFormSubmit,
+  isVisible,
 }) => {
   return (
     <section id="contact" className="flex w-full flex-col items-center justify-center gap-10 py-24">
       <header className="text-center">
         <h2 className="text-3xl font-semibold text-neutral-900 md:text-4xl">
-          <FadeInText>Contact</FadeInText>
+          Contact
         </h2>
         <p className="mt-3 text-sm uppercase tracking-[0.3em] text-neutral-500 md:text-base">
           お問い合わせ

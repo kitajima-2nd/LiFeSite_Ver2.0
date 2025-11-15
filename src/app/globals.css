@@ -48,16 +48,5 @@
 }
 
 @layer utilities {
-  .fade-in-text {
-    visibility: hidden;
-    display: inline-block;
-    white-space: pre-line;
-  }
-
-  .char {
-    display: inline-block;
-    opacity: 0;
-    animation: fadeIn 0.4s ease forwards;
-  }
 }
 

@@ -17,7 +17,7 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import { SlideShow } from '../components/SlideShow/SlideShow';
+import { TopPage } from '../components/TopPage/TopPage';
 import { InfoSection } from '../components/InfoSection/InfoSection';
 import { NewsSection } from '../components/NewsSection/NewsSection';
 import { SectionContainer } from '../components/SectionContainer/SectionContainer';
@@ -27,6 +27,7 @@ import { ContactSection } from '../components/HomeSections/ContactSection';
 import { useSectionScroll } from '../hooks/useSectionScroll';
 import { useFooterHeight } from '../hooks/useFooterHeight';
 import { useSlideShowVisibility } from '../hooks/useSlideShowVisibility';
+
 import {
   slides,
   infoItems,
@@ -48,7 +49,7 @@ export default function HomePage() {
   // 各セクションの位置を検出するために使用される非表示のマーカー要素
   const sectionMarkersRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  // SlideShowの表示状態を取得
+  // SlideShow（TopPage）の表示状態を取得
   const isSlideShowVisible = useSlideShowVisibility();
 
   // スクロール処理とセクション表示制御
@@ -84,8 +85,8 @@ export default function HomePage() {
 
   return (
     <>
-      {/* スライドショー（トップページのヒーローセクション） */}
-      <SlideShow slides={slides} />
+      {/* トップページのヒーローセクション */}
+      <TopPage slides={slides} />
 
       {/* セクションマーカー（スクロール検出用、非表示） */}
       {/* 
@@ -120,14 +121,12 @@ export default function HomePage() {
       >
         {/* Information Section（ご案内） */}
         <SectionContainer opacity={sectionOpacities[0]}>
-          <div className="flex items-center justify-center py-24">
             <InfoSection 
-              title="Information" 
-              subtitle="What is LiFe?" 
+              title="What is LiFe ." 
+              subtitle="私たちについて ."
               items={infoItems}
               isVisible={sectionOpacities[0] > 0}
             />
-          </div>
         </SectionContainer>
 
         {/* Service Section（サービスのご案内） */}

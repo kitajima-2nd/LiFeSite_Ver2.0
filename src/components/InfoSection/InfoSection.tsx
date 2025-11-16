@@ -19,6 +19,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { InfoItem } from '../../types';
+import { TextAnimation } from '../animation/TextAnimation';
 
 interface InfoSectionProps {
   title: string;
@@ -31,49 +32,33 @@ export const InfoSection: React.FC<InfoSectionProps> = ({ title, subtitle, items
   return (
     <section className="relative mx-auto flex max-w-6xl flex-col gap-12 px-6 py-14 md:px-10 md:py-20">
         <header className="">
-          <h2 className="text-9xl font-semibold md:text-9xl">
-            {title}
+          <h2 className="text-9xl font-semibold text-gray-200 md:text-9xl ">
+            <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
+              {title}
+            </TextAnimation>
           </h2>
-          {subtitle && (
-            <p className="text-white/70">
-              {subtitle}
-            </p>
+            {subtitle && (
+              <p className="text-white/70">
+                <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
+                  {subtitle}
+                </TextAnimation>
+              </p>
           )}
         </header>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {items.map((item) => (
-            <article
-              key={item.id}
-              className="group flex flex-col overflow-hidden rounded-2xl bg-white/95 p-6 text-neutral-800 shadow-lg shadow-primary/20 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30"
-            >
-              {item.imageUrl && (
-                <figure className="relative overflow-hidden rounded-xl">
-                  <Image
-                    src={item.imageUrl}
-                    alt={item.title}
-                    width={640}
-                    height={360}
-                    className="h-40 w-full object-cover transition duration-500 group-hover:scale-105"
-                  />
-                </figure>
-              )}
-              <div className="mt-5 flex flex-1 flex-col gap-4">
-                <h3 className="text-lg font-semibold text-neutral-900">{item.title}</h3>
-                <p className="text-sm leading-relaxed text-neutral-600">{item.description}</p>
-                {item.linkUrl && (
-                  <div className="mt-auto">
-                    <Link
-                      href={item.linkUrl}
-                      className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white shadow-md shadow-primary/40 transition hover:shadow-lg hover:shadow-primary/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
-                    >
-                      詳しくみる
-                    </Link>
-                  </div>
-                )}
-              </div>
-            </article>
-          ))}
+        <div className="container flex flex-col-reverse items-start gap-6 md:flex-row">
+          <div className="flex-1 text-neutral-200" dangerouslySetInnerHTML={{ __html: items[0].description }} />
+          <div className="w-full md:w-[300px] lg:w-[336px] shrink-0">
+            <Image
+              src={items[0].imageUrl}
+              alt={items[0].title}
+              width={960}
+              height={540}
+              className="h-auto w-full rounded-xl object-cover"
+              sizes="(min-width: 1024px) 336px, (min-width: 768px) 300px, 100vw"
+              priority
+            />
+          </div>
         </div>
     </section>
   );

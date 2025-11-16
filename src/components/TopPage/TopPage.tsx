@@ -20,12 +20,12 @@ import Image from 'next/image';
 import { useSlideShow } from '../../hooks/useSlideShow';
 import { SlideItem } from '../../types';
 
-interface SlideShowProps {
+interface TopPageProps {
   slides: SlideItem[];
   interval?: number;
 }
 
-export const SlideShow: React.FC<SlideShowProps> = ({ slides, interval = 4000 }) => {
+export const TopPage: React.FC<TopPageProps> = ({ slides, interval = 4000 }) => {
   // スライドショーの自動再生を制御するカスタムフック
   // 指定された間隔でスライドを自動的に切り替えます
   const { currentIndex } = useSlideShow({

@@ -118,18 +118,11 @@ export const useSectionScroll = (
      * 4. 現在のセクションと異なる場合、フェードアウト→フェードインの順で切り替え
      */
     const handleScroll = () => {
-        // SlideShowが表示されている場合はすべて非表示
+        // SlideShowが表示されている場合は、全セクションを必ず非表示にする
         if (isSlideShowVisibleRef.current) {
-          const currentIndex = currentSectionIndexRef.current;
-          if (currentIndex !== null) {
-            setSectionOpacities((prev) => {
-              const newOpacities = [...prev];
-              newOpacities[currentIndex] = 0;
-              return newOpacities;
-            });
-            setCurrentSectionIndex(null);
-            setIsTransitioning(false);
-          }
+          setSectionOpacities([0, 0, 0, 0, 0]);
+          setCurrentSectionIndex(null);
+          setIsTransitioning(false);
           return;
         }
 

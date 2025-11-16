@@ -28,25 +28,10 @@ export const slides: SlideItem[] = [
 export const infoItems: InfoItem[] = [
   {
     id: 1,
-    title: 'ここにタイトルを入れます',
-    description: 'ここに説明を入れます。サンプルテキスト。',
-    imageUrl: '/images/sample1.jpg',
-    linkUrl: '/service',
-  },
-  {
-    id: 2,
-    title: 'ここにタイトルを入れます',
-    description: 'ここに説明を入れます。サンプルテキスト。',
-    imageUrl: '/images/sample1.jpg',
-    linkUrl: '/service',
-  },
-  {
-    id: 3,
-    title: 'ここにタイトルを入れます',
-    description:
-      'ここに説明を入れます。サンプルテキスト。ここに説明を入れます。サンプルテキスト。ここに説明を入れます。サンプルテキスト。',
-    imageUrl: '/images/sample1.jpg',
-    linkUrl: '/service',
+    title: 'The core of LiFe .',
+    description: 'LiFeとは生活の中にあるすべてのものを指し、<br>我々は既存の価値観を破壊し、新しい価値を創造することを目指します。',
+    imageUrl: '/images/image1.png',
+    linkUrl: '#',
   },
 ];
 

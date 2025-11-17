@@ -122,8 +122,8 @@ export default function HomePage() {
         {/* Information Section（ご案内） */}
         <SectionContainer opacity={sectionOpacities[0]}>
             <InfoSection 
-              title="What is LiFe ." 
-              subtitle="私たちについて ."
+              title="" 
+              subtitle="  私たちについて ."
               items={infoItems}
               isVisible={sectionOpacities[0] > 0}
             />

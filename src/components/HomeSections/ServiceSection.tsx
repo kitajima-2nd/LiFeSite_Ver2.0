@@ -2,11 +2,15 @@
  * Serviceセクションコンポーネント
  * 
  * サービスのご案内セクションを表示します。
- * 各サービスをカード形式で表示し、ホバー時にアニメーションを適用します。
+ * 左側にタイトルを縦に並べ、右側に対応する画像を表示します。
+ * タイトルをホバーすると、右側の画像が切り替わります。
  */
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { InfoItem } from '../../types';
+import { TextAnimation } from '../animation/TextAnimation';
 
 interface ServiceSectionProps {
   serviceItems: InfoItem[];
@@ -14,45 +18,92 @@ interface ServiceSectionProps {
 }
 
 export const ServiceSection: React.FC<ServiceSectionProps> = ({ serviceItems, isVisible }) => {
+  // 現在ホバーされている（表示されている）アイテムのインデックス
+  const [hoveredIndex, setHoveredIndex] = useState<number>(0);
+
   return (
-    <section id="service" className="flex w-full flex-col items-center justify-center gap-10 py-24">
-      <header className="text-center">
-        <h2 className="text-3xl font-semibold text-neutral-900 md:text-4xl">
-          Service
+    <section id="service" className="relative mx-auto flex max-w-6xl flex-col gap-12 px-6 py-14 md:px-10 md:py-20">
+      <header className="">
+        <h2 className="font-semibold text-gray-200 text-5xl md:text-8xl lg:text-8xl">
+          <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
+            Service.
+          </TextAnimation>
         </h2>
-        <p className="mt-3 text-sm uppercase tracking-[0.3em] text-neutral-500 md:text-base">
-          サービスのご案内
+        <p className="text-primary text-xl md:text-2xl lg:text-3xl">
+          <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05} >
+            サービスのご案内
+          </TextAnimation>
         </p>
       </header>
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-        {serviceItems.map((item) => (
-          <article
-            key={item.id}
-            className="group flex flex-col overflow-hidden rounded-3xl border border-neutral-200/70 bg-white/95 shadow-lg shadow-primary/10 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/20"
-          >
-            {item.imageUrl && (
-              <figure className="relative overflow-hidden">
-                <Image
-                  src={item.imageUrl}
-                  alt={item.title}
-                  width={640}
-                  height={360}
-                  className="h-48 w-full object-cover transition duration-500 group-hover:scale-105"
-                />
-              </figure>
-            )}
-            <div className="flex flex-1 flex-col gap-4 p-6">
-              <h3 className="text-lg font-semibold text-neutral-900">{item.title}</h3>
-              <p className="text-sm leading-relaxed text-neutral-600">{item.description}</p>
-              <a
-                href={item.linkUrl}
-                className="mt-auto inline-flex items-center justify-center rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white shadow-md shadow-primary/40 transition hover:shadow-lg hover:shadow-primary/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+
+      {/* コンテンツエリア：左側にタイトル、右側に画像 */}
+      <div className="flex flex-col gap-8 md:flex-row md:gap-12 ">
+        {/* 左側：タイトルリスト */}
+        <div className="flex flex-col gap-4 md:w-1/2">
+          {serviceItems.map((item, index) => (
+            <div
+              key={item.id}
+              onMouseEnter={() => setHoveredIndex(index)}
+              className="cursor-pointer"
+            >
+              <h3
+                className={`text-gray-200 text-xl md:text-2xl lg:text-3xl font-semibold transition-all duration-300 origin-left ${
+                  hoveredIndex === index
+                    ? 'text-primary scale-105'
+                    : 'opacity-50 scale-100'
+                }`}
               >
-                お問い合わせ
-              </a>
+                {item.title}
+              </h3>
             </div>
-          </article>
-        ))}
+          ))}
+        </div>
+
+        {/* 右側：descriptionと画像表示エリア */}
+        <div className="flex flex-col gap-6 md:w-1/2">
+          {/* 上側：description表示エリア */}
+          <div className="relative min-h-[120px]">
+            {serviceItems.map((item, index) => (
+              <div
+                key={`desc-${item.id}`}
+                className="absolute inset-0 transition-opacity duration-500"
+                style={{
+                  opacity: hoveredIndex === index ? 1 : 0,
+                  pointerEvents: hoveredIndex === index ? 'auto' : 'none',
+                }}
+              >
+                <p className="text-white text-base md:text-lg leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* 下側：画像表示エリア */}
+          <div className="relative aspect-video opacity-50">
+            {serviceItems.map((item, index) => (
+              <div
+                key={`img-${item.id}`}
+                className="absolute inset-0 transition-opacity duration-500"
+                style={{
+                  opacity: hoveredIndex === index ? 1 : 0,
+                  pointerEvents: hoveredIndex === index ? 'auto' : 'none',
+                }}
+              >
+                {item.imageUrl && (
+                  <Image
+                    src={item.imageUrl}
+                    alt={item.title}
+                    fill
+                    className="object-cover rounded-2xl"
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    priority={index === 0}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

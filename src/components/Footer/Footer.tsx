@@ -12,6 +12,8 @@
  * @param menuItems - ナビゲーションメニューのアイテム配列
  * @param showTemplateCredit - テンプレートクレジットを表示するかどうか（未使用）
  */
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { MenuItem } from '../../types';
@@ -43,6 +45,35 @@ export const Footer: React.FC<FooterProps> = ({
     }
   });
 
+  /**
+   * フッターのナビゲーションリンクがクリックされた時の処理
+   * アンカーリンクの場合は、該当セクションまでスクロール
+   */
+  const handleFooterNavigation = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    e.preventDefault();
+
+    // アンカーリンクの場合、該当セクションまでスクロール
+    if (path.startsWith('#')) {
+      const sectionId = path.substring(1);
+      // セクションマーカーを取得（main要素内のdiv要素）
+      const markerElement = document.querySelector(`main > div#${sectionId}`);
+      if (markerElement) {
+        const elementTop = markerElement.getBoundingClientRect().top + window.scrollY;
+        const headerHeight = 80; // ヘッダーの高さ
+        window.scrollTo({
+          top: elementTop - headerHeight,
+          behavior: 'smooth',
+        });
+      }
+    } else if (path === '/') {
+      // ホームの場合はトップへスクロール
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <footer className="mt-12 border-t border-neutral-200 bg-neutral-50/80 relative z-0">
       <div className="mx-auto flex max-w-6xl flex-col gap-1 px-6 py-6 text-sm text-neutral-600">
@@ -52,6 +83,7 @@ export const Footer: React.FC<FooterProps> = ({
               <Link
                 key={`${item.label}-${index}`}
                 href={item.path}
+                onClick={(e) => handleFooterNavigation(e, item.path)}
                 className="transition hover:text-primary"
               >
                 {item.label}
@@ -60,7 +92,11 @@ export const Footer: React.FC<FooterProps> = ({
           </nav>
           <p className="text-xs text-neutral-500">
             &copy; {new Date().getFullYear()}&nbsp;
-            <Link href="/" className="font-medium text-neutral-700 hover:text-primary">
+            <Link 
+              href="/" 
+              onClick={(e) => handleFooterNavigation(e, '/')}
+              className="font-medium text-neutral-700 hover:text-primary"
+            >
               株式会社LiFe
             </Link>
             &nbsp;All Rights Reserved.

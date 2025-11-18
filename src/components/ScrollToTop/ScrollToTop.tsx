@@ -48,7 +48,7 @@ export const ScrollToTop: React.FC = () => {
       type="button"
       onClick={handleScrollToTop}
       aria-label="ページトップへ移動"
-      className={`fixed bottom-6 right-6 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white shadow-xl shadow-primary/40 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+      className={`fixed bottom-6 right-6 z-50 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white shadow-xl shadow-primary/40 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
         isVisible ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0'
       }`}
     >

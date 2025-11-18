@@ -59,11 +59,11 @@ export const Header: React.FC<HeaderProps> = ({ companyName, logoUrl, menuItems 
     <header className="sticky top-0 z-50 border-b border-white/40 bg-white/80 backdrop-blur-md">
       <div className="relative flex h-20 items-center justify-between px-6">
       <h1 className="font-display text-lg font-semibold text-neutral-900 md:text-xl">
-        <Link href="/" className="inline-flex items-center gap-3">
+        <Link href="/" className="inline-flex items-center gap-2">
           {logoUrl && (
             <Image src={logoUrl} alt={companyName} width={160} height={40} className="h-10 w-auto" />
           )}
-          <span className="text-base md:text-lg">{companyName}</span>
+          <span className="text-gray-700 text-base md:text-lg py-2">{companyName}</span>
         </Link>
       </h1>
         <Navigation items={menuItems} isOpen={isMenuOpen} onLinkClick={handleLinkClick} />

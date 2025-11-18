@@ -16,8 +16,6 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
 import { InfoItem } from '../../types';
 import { TextAnimation } from '../animation/TextAnimation';
 
@@ -56,36 +54,12 @@ export const InfoSection: React.FC<InfoSectionProps> = ({ title, subtitle, items
         )}
       </header>
 
-      {/* h2タグ以降のコンテンツ部分（背景画像を適用） */}
-      {/* <div className=" overflow-hidden rounded-2xl"> */}
-        {/* 背景画像（3つの画像を横並びに段違いで配置） */}
-        <div className="absolute inset-0 -z-10 flex">
-          {/* image1: 上に配置 */}
-          <div className=" flex-1 h-full">
-            <Image
-              src="/images/image1.png"
-              alt="Background image 1"
-              fill
-              className="object-cover"
-              sizes="(min-width: 1280px) 1200px,
-                    (min-width: 1024px) 1024px,
-                    (min-width: 768px) 768px,
-                    100vw"
-              priority
-              quality={90}
-            />
-          </div>
-          {/* オーバーレイ（テキストの可読性向上） */}
-          <div className="absolute inset-0 bg-neutral-900/30 backdrop-blur-sm" />
+      {/* コンテンツ部分 */}
+      <div className="p-6 md:p-10">
+        <div className="container flex flex-col-reverse items-start gap-6 md:flex-row">
+          <div className="flex-1 text-neutral-200 text-2xl bold" dangerouslySetInnerHTML={{ __html: items[0].description }} />
         </div>
-
-        {/* コンテンツ（前面に表示） */}
-        <div className="relative z-10 p-6 md:p-10">
-          <div className="container flex flex-col-reverse items-start gap-6 md:flex-row">
-            <div className="flex-1 text-neutral-200 text-2xl bold" dangerouslySetInnerHTML={{ __html: items[0].description }} />
-          </div>
-        </div>
-      {/* </div> */}
+      </div>
     </section>
   );
 };

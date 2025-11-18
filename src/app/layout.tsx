@@ -31,8 +31,8 @@ import { MenuItem } from '../types';
  * SEO対策として、タイトルと説明を設定します
  */
 export const metadata: Metadata = {
-  title: 'SAMPLE COMPANY',
-  description: 'ここにサイト説明を入れます',
+  title: '株式会社LiFe',
+  description: '株式会社LiFeのホームページ',
 };
 
 /**
@@ -41,18 +41,10 @@ export const metadata: Metadata = {
  */
 const menuItems: MenuItem[] = [
   { label: 'HOME', path: '/' },
-  {
-    label: 'SERVICE',
-    path: '',
-    children: [
-      { label: 'メニューメニューメニュー', path: '/service' },
-      { label: 'メニュー', path: '/service' },
-      { label: 'メニュー', path: '/service' },
-      { label: 'メニュー', path: '/service' },
-    ],
-  },
-  { label: 'COMPANY', path: '/company' },
-  { label: 'CONTACT', path: '/contact' },
+  { label: 'SERVICE', path: '#service' },
+  { label: 'COMPANY', path: '#company' },
+  { label: 'NEWS', path: '#news' },
+  { label: 'CONTACT', path: '#contact' },
 ];
 
 export default function RootLayout({
@@ -73,7 +65,7 @@ export default function RootLayout({
             <div className="flex-1">
               {children}
             </div>
-            <Footer companyName="SAMPLE COMPANY" menuItems={menuItems} />
+            <Footer companyName="株式会社LiFe" menuItems={menuItems} />
           </div>
           <ScrollToTop />
         </ClientWrapper>

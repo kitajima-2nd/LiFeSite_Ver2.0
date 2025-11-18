@@ -21,6 +21,7 @@ import { TopPage } from '../components/TopPage/TopPage';
 import { InfoSection } from '../components/InfoSection/InfoSection';
 import { NewsSection } from '../components/NewsSection/NewsSection';
 import { SectionContainer } from '../components/SectionContainer/SectionContainer';
+import { SectionBackground } from '../components/SectionBackground/SectionBackground';
 import { ServiceSection } from '../components/HomeSections/ServiceSection';
 import { CompanySection } from '../components/HomeSections/CompanySection';
 import { ContactSection } from '../components/HomeSections/ContactSection';
@@ -88,18 +89,34 @@ export default function HomePage() {
       {/* トップページのヒーローセクション */}
       <TopPage slides={slides} />
 
+      {/* InfoSection用の背景画像（画面全体の背景） */}
+      <SectionBackground
+        opacity={sectionOpacities[0]}
+        imageSrc="/images/image1.png"
+        imageAlt="Background image 1"
+        overlayOpacity={0.3}
+        objectPosition="center top"
+      />
+
       {/* セクションマーカー（スクロール検出用、非表示） */}
       {/* 
         各セクションの位置を検出するために使用されるマーカー要素。
         実際には表示されず、スクロール位置の計算にのみ使用されます。
       */}
       <main className="flex flex-col">
-        {[0, 1, 2, 3, 4].map((index) => (
+        {[
+          { index: 0, id: null },
+          { index: 1, id: 'service' },
+          { index: 2, id: 'company' },
+          { index: 3, id: 'news' },
+          { index: 4, id: 'contact' },
+        ].map(({ index, id }) => (
           <div
             key={index}
             ref={(el) => {
               sectionMarkersRef.current[index] = el;
             }}
+            id={id || undefined}
             className="min-h-screen"
             aria-hidden="true"
           />
@@ -146,30 +163,30 @@ export default function HomePage() {
           />
         </SectionContainer>
 
-        {/* Contact Section（お問い合わせ） */}
-        <SectionContainer opacity={sectionOpacities[3]}>
-          <ContactSection
-            formData={formData}
-            onFormChange={handleChange}
-            onFormSubmit={handleSubmit}
-            isVisible={sectionOpacities[3] > 0}
-          />
-        </SectionContainer>
-
         {/* News Section（お知らせ） */}
-        {/* 
-          お知らせセクションは、フッターとの重なりを防ぐため、
-          他のセクションより上（top: 35%）に配置されています。
-        */}
-        <SectionContainer opacity={sectionOpacities[4]} top="35%">
+        <SectionContainer opacity={sectionOpacities[3]}>
           <div className="flex items-center justify-center py-20">
             <NewsSection 
               title="What's New" 
               subtitle="お知らせ" 
               newsItems={newsItems}
-              isVisible={sectionOpacities[4] > 0}
+              isVisible={sectionOpacities[3] > 0}
             />
           </div>
+        </SectionContainer>
+
+        {/* Contact Section（お問い合わせ） */}
+        {/* 
+          お問い合わせセクションは、フッターとの重なりを防ぐため、
+          他のセクションより上（top: 35%）に配置されています。
+        */}
+        <SectionContainer opacity={sectionOpacities[4]}>
+          <ContactSection
+            formData={formData}
+            onFormChange={handleChange}
+            onFormSubmit={handleSubmit}
+            isVisible={sectionOpacities[4] > 0}
+          />
         </SectionContainer>
       </div>
     </>

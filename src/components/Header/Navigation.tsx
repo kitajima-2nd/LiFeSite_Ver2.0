@@ -42,10 +42,33 @@ export const Navigation: React.FC<NavigationProps> = ({ items, isOpen, onLinkCli
   /**
    * ナビゲーションリンクがクリックされた時の処理
    * ドロップダウンを閉じ、親コンポーネントに通知
+   * アンカーリンクの場合は、該当セクションまでスクロール
    */
-  const handleNavigation = () => {
+  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    e.preventDefault();
     setMobileDropdownIndex(null);
     onLinkClick();
+
+    // アンカーリンクの場合、該当セクションまでスクロール
+    if (path.startsWith('#')) {
+      const sectionId = path.substring(1);
+      // セクションマーカーを取得（main要素内のdiv要素）
+      const markerElement = document.querySelector(`main > div#${sectionId}`);
+      if (markerElement) {
+        const elementTop = markerElement.getBoundingClientRect().top + window.scrollY;
+        const headerHeight = 80; // ヘッダーの高さ
+        window.scrollTo({
+          top: elementTop - headerHeight,
+          behavior: 'smooth',
+        });
+      }
+    } else if (path === '/') {
+      // ホームの場合はトップへスクロール
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
   };
 
   return (
@@ -76,7 +99,7 @@ export const Navigation: React.FC<NavigationProps> = ({ items, isOpen, onLinkCli
                     <Link
                       key={childIndex}
                       href={child.path}
-                      onClick={handleNavigation}
+                      onClick={(e) => handleNavigation(e, child.path)}
                       className="rounded-xl px-3 py-2 text-start text-neutral-600 transition hover:bg-primary/10 hover:text-neutral-900"
                     >
                       {child.label}
@@ -89,7 +112,7 @@ export const Navigation: React.FC<NavigationProps> = ({ items, isOpen, onLinkCli
             <Link
               key={index}
               href={item.path}
-              onClick={handleNavigation}
+              onClick={(e) => handleNavigation(e, item.path)}
               className="rounded-full px-4 py-2 transition hover:bg-primary/10 hover:text-neutral-900"
             >
               {item.label}
@@ -136,7 +159,7 @@ export const Navigation: React.FC<NavigationProps> = ({ items, isOpen, onLinkCli
                       <Link
                         key={childIndex}
                         href={child.path}
-                        onClick={handleNavigation}
+                        onClick={(e) => handleNavigation(e, child.path)}
                         className="block rounded-xl px-3 py-2 transition hover:bg-primary/10 hover:text-neutral-900"
                       >
                         {child.label}
@@ -149,7 +172,7 @@ export const Navigation: React.FC<NavigationProps> = ({ items, isOpen, onLinkCli
               <Link
                 key={index}
                 href={item.path}
-                onClick={handleNavigation}
+                onClick={(e) => handleNavigation(e, item.path)}
                 className="block rounded-2xl border border-transparent px-4 py-3 font-medium text-neutral-800 transition hover:border-primary/40 hover:bg-primary/10"
               >
                 {item.label}

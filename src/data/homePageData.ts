@@ -38,39 +38,44 @@ export const infoItems: InfoItem[] = [
 /**
  * お知らせセクションに表示するニュースアイテムのリスト
  * 各ニュースには、日付、カテゴリ、内容、重要フラグを設定できます。
+ * コンテンツ表示数は4つまで それ以上はレイアウト調整する必要あり
  */
 export const newsItems: NewsItem[] = [
   {
     date: '2024/05/19',
     category: 'その他',
     content: 'トップのスライドショーをcssスライドショーからjQuery+cssタイプに変更。',
+    url: '#',
+    imageUrl: '/images/image1.png',
   },
   {
     date: '2024/05/15',
     category: 'その他',
     content: '企業・ビジネス向け シンプル無料ホームページテンプレート tp_biz62公開。',
+    url: '#',
+    imageUrl: '/images/image2.png',
   },
   {
     date: '20XX/00/00',
     category: '重要',
     content: 'サンプルテキスト。サンプルテキスト。サンプルテキスト。',
     isImportant: true,
+    url: '#',
+    imageUrl: '/images/image3.png',
   },
   {
     date: '20XX/00/00',
     category: 'サービス',
     content: 'サンプルテキスト。サンプルテキスト。サンプルテキスト。',
+    url: '#',
+    imageUrl: '/images/image1.png',
   },
   {
     date: '20XX/00/00',
-    category: 'その他',
+    category: 'サービス',
     content: 'サンプルテキスト。サンプルテキスト。サンプルテキスト。',
-  },
-  {
-    date: '20XX/00/00',
-    category: 'その他',
-    content:
-      'サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。',
+    url: '#',
+    imageUrl: '/images/image1.png',
   },
 ];
 

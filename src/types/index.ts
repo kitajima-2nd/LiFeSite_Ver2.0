@@ -3,6 +3,8 @@ export interface NewsItem {
   category: string;
   content: string;
   isImportant?: boolean;
+  url?: string;
+  imageUrl?: string;
 }
 
 export interface InfoItem {

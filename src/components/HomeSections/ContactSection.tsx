@@ -4,7 +4,10 @@
  * お問い合わせセクションを表示します。
  * お問い合わせフォームを表示します。
  */
+'use client';
+
 import React from 'react';
+import { TextAnimation } from '../animation/TextAnimation';
 
 interface ContactFormData {
   name: string;
@@ -26,62 +29,88 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   isVisible,
 }) => {
   return (
-    <section id="contact" className="flex w-full flex-col items-center justify-center gap-10 py-24">
-      <header className="text-center">
-        <h2 className="text-3xl font-semibold text-neutral-900 md:text-4xl">
-          Contact
+    <section id="contact" className="relative mx-auto flex max-w-6xl flex-col gap-6 overflow-x-hidden px-4 py-8 md:px-10 md:py-12">
+      <header className="">
+        <h2 className="font-semibold text-gray-200 text-5xl md:text-8xl lg:text-8xl">
+          <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
+            Contact.
+          </TextAnimation>
         </h2>
-        <p className="mt-3 text-sm uppercase tracking-[0.3em] text-neutral-500 md:text-base">
-          お問い合わせ
+        <p className="text-primary text-xl md:text-2xl lg:text-3xl">
+          <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
+            お問い合わせ
+          </TextAnimation>
         </p>
       </header>
-      <div className="space-y-8 rounded-3xl border border-neutral-200/80 bg-white/95 p-8 shadow-lg shadow-primary/10 md:p-12">
-        <div className="flex flex-col gap-2 rounded-2xl border border-primary/20 bg-primary/5 px-6 py-5 text-neutral-700 md:flex-row md:items-center md:justify-between">
-          <p className="text-lg font-semibold text-neutral-900">株式会社LiFe</p>
-          <p className="text-sm font-medium text-neutral-600">
-            電話番号：03-0000-0000（平日10:00〜18:00）
-          </p>
+
+      {/* コンテンツ部分 */}
+      <div className="w-full">
+        {/* 会社情報テーブル */}
+        <div className="mb-4 w-full overflow-x-auto">
+          <table className="w-full table-fixed">
+            <tbody>
+              <tr className="border-b border-gray-600">
+                <td className="w-24 py-3 text-gray-200 text-sm md:w-32 md:text-base">会社名</td>
+                <td className="break-words py-3 text-gray-200 text-sm md:text-base">株式会社LiFe</td>
+              </tr>
+              <tr className="border-b border-gray-600">
+                <td className="w-24 py-3 text-gray-200 text-sm md:w-32 md:text-base">電話番号</td>
+                <td className="break-words py-3 text-gray-200 text-sm md:text-base">03-0000-0000（平日10:00〜18:00）</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <form onSubmit={onFormSubmit} className="space-y-6">
-          <div className="grid gap-6 md:grid-cols-2">
-            <label className="flex flex-col gap-2 text-sm font-medium text-neutral-700">
-              お名前<span className="text-primary">*</span>
+
+        {/* お問い合わせフォーム */}
+        <form onSubmit={onFormSubmit} className="w-full space-y-4">
+          <div className="grid gap-4 md:grid-cols-2">
+            <label className="flex flex-col gap-2 text-gray-200">
+              <span className="text-sm md:text-base">
+                お名前<span className="text-primary">*</span>
+              </span>
               <input
                 type="text"
                 name="name"
                 value={formData.name}
                 onChange={onFormChange}
                 required
-                className="rounded-2xl border border-neutral-300 bg-white px-4 py-3 text-base text-neutral-800 shadow-inner shadow-neutral-900/5 transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+                className="rounded-lg border border-gray-600 bg-transparent px-4 py-2 text-gray-200 placeholder-gray-500 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+                placeholder="お名前を入力してください"
               />
             </label>
-            <label className="flex flex-col gap-2 text-sm font-medium text-neutral-700">
-              メールアドレス<span className="text-primary">*</span>
+            <label className="flex flex-col gap-2 text-gray-200">
+              <span className="text-sm md:text-base">
+                メールアドレス<span className="text-primary">*</span>
+              </span>
               <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={onFormChange}
                 required
-                className="rounded-2xl border border-neutral-300 bg-white px-4 py-3 text-base text-neutral-800 shadow-inner shadow-neutral-900/5 transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+                className="rounded-lg border border-gray-600 bg-transparent px-4 py-2 text-gray-200 placeholder-gray-500 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+                placeholder="メールアドレスを入力してください"
               />
             </label>
           </div>
-          <label className="flex flex-col gap-2 text-sm font-medium text-neutral-700">
-            お問い合わせ詳細<span className="text-primary">*</span>
+          <label className="flex flex-col gap-2 text-gray-200">
+            <span className="text-sm md:text-base">
+              お問い合わせ詳細<span className="text-primary">*</span>
+            </span>
             <textarea
               name="message"
               value={formData.message}
               onChange={onFormChange}
-              rows={6}
+              rows={4}
               required
-              className="rounded-2xl border border-neutral-300 bg-white px-4 py-3 text-base text-neutral-800 shadow-inner shadow-neutral-900/5 transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+              className="rounded-lg border border-gray-600 bg-transparent px-4 py-2 text-gray-200 placeholder-gray-500 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+              placeholder="お問い合わせ内容を入力してください"
             />
           </label>
           <div className="flex justify-center">
             <button
               type="submit"
-              className="inline-flex items-center rounded-full bg-primary px-8 py-3 text-base font-semibold text-white shadow-lg shadow-primary/40 transition hover:shadow-xl hover:shadow-primary/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+              className="inline-flex items-center rounded-lg bg-primary px-8 py-2.5 text-base font-semibold text-white transition hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/70"
             >
               内容を確認する
             </button>

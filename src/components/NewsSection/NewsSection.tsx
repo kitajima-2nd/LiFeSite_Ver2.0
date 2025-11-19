@@ -30,7 +30,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ title, subtitle, newsI
   return (
     <section id="news" className="relative mx-auto flex max-w-6xl flex-col gap-4 overflow-x-hidden px-4 py-7 md:px-10 md:py-20">
       <header className="mt-16 md:mt-24">
-        <h2 className="font-semibold text-gray-200 text-5xl md:text-8xl lg:text-8xl">
+        <h2 className="font-semibold text-gray-700 text-5xl md:text-8xl lg:text-8xl">
           <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
             {title}
           </TextAnimation>
@@ -51,7 +51,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ title, subtitle, newsI
             <tbody>
               {newsItems.map((item, index) => (
                 <tr key={`${item.date}-${index}`} className="border-b border-gray-600">
-                  <td className="w-24 py-4 text-gray-200 text-sm md:w-32 md:text-base">
+                  <td className="w-24 py-4 text-gray-900 text-sm md:w-32 md:text-base">
                     <div className="flex flex-col gap-1">
                       <span>{item.date}</span>
                       <span className="text-primary text-xs">{item.category}</span>
@@ -67,7 +67,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ title, subtitle, newsI
                       )}
                     </div>
                   </td>
-                  <td className="break-words py-4 text-gray-200 text-sm md:text-base">{item.content}</td>
+                  <td className="break-words py-4 text-gray-900 text-sm md:text-base">{item.content}</td>
                   {item.imageUrl && (
                     <td className="w-16 py-4 md:w-20">
                       <div className="relative h-12 w-12 overflow-hidden rounded md:h-16 md:w-16">

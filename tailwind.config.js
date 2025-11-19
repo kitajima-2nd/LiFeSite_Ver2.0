@@ -14,8 +14,8 @@ module.exports = {
         'neutral-500': '#6b7280',
       },
       fontFamily: {
-        sans: ['"Noto Sans JP"', 'system-ui', 'sans-serif'],
-        display: ['"Reddit Sans"', '"Noto Sans JP"', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-noto-serif-jp)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-noto-serif-jp)', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         card: '0 16px 40px rgba(10, 186, 181, 0.12)',

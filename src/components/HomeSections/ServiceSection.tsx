@@ -24,7 +24,7 @@ export const ServiceSection: React.FC<ServiceSectionProps> = ({ serviceItems, is
   return (
     <section id="service" className="relative mx-auto flex max-w-6xl flex-col gap-12 px-6 py-14 md:px-10 md:py-20">
       <header className="">
-        <h2 className="font-semibold text-gray-200 text-5xl md:text-8xl lg:text-8xl">
+        <h2 className="font-semibold text-gray-700 text-5xl md:text-8xl lg:text-8xl">
           <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
             Service.
           </TextAnimation>
@@ -47,7 +47,7 @@ export const ServiceSection: React.FC<ServiceSectionProps> = ({ serviceItems, is
               className="cursor-pointer"
             >
               <h3
-                className={`text-gray-200 text-xl md:text-2xl lg:text-3xl font-semibold transition-all duration-300 origin-left ${
+                className={`text-gray-700 text-xl md:text-2xl lg:text-3xl font-semibold transition-all duration-300 origin-left ${
                   hoveredIndex === index
                     ? 'text-primary scale-105'
                     : 'opacity-50 scale-100'
@@ -72,7 +72,7 @@ export const ServiceSection: React.FC<ServiceSectionProps> = ({ serviceItems, is
                   pointerEvents: hoveredIndex === index ? 'auto' : 'none',
                 }}
               >
-                <p className="text-white text-base md:text-lg leading-relaxed">
+                <p className="text-gray-900 text-base md:text-lg leading-relaxed">
                   {item.description}
                 </p>
               </div>

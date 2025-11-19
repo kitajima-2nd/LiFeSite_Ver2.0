@@ -33,7 +33,7 @@ export const CompanySection: React.FC<CompanySectionProps> = ({
   return (
     <section id="company" className="relative mx-auto flex max-w-6xl flex-col gap-2 overflow-x-hidden px-1 py-14 md:px-10 md:py-20">
       <header className="">
-        <h2 className="font-semibold text-gray-200 text-5xl md:text-8xl lg:text-8xl">
+        <h2 className="font-semibold text-gray-700 text-5xl md:text-8xl lg:text-8xl">
           <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
             Company.
           </TextAnimation>
@@ -53,8 +53,8 @@ export const CompanySection: React.FC<CompanySectionProps> = ({
             <tbody>
               {companyDetails.map((detail) => (
                 <tr key={detail.label} className="border-b border-gray-600">
-                  <td className="w-24 py-4 text-gray-200 text-sm md:w-32 md:text-base ">{detail.label}</td>
-                  <td className="break-words py-4 text-gray-200 text-sm md:text-base ">{detail.value}</td>
+                  <td className="w-24 py-4 text-gray-900 text-sm md:w-32 md:text-base ">{detail.label}</td>
+                  <td className="break-words py-4 text-gray-900 text-sm md:text-base ">{detail.value}</td>
                 </tr>
               ))}
             </tbody>

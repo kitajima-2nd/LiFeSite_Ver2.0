@@ -18,6 +18,7 @@
  */
 import type { Metadata } from 'next';
 import React from 'react';
+import { Noto_Serif_JP } from 'next/font/google';
 import './globals.css';
 
 import { Header } from '../components/Header/Header';
@@ -25,6 +26,14 @@ import { Footer } from '../components/Footer/Footer';
 import { ScrollToTop } from '../components/ScrollToTop/ScrollToTop';
 import ClientWrapper from '../components/ClientWrapper';
 import { MenuItem } from '../types';
+
+// フォントの設定
+const NotoSerifJP = Noto_Serif_JP({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '700', '900'],
+  variable: '--font-noto-serif-jp',
+  display: 'swap',
+});
 
 /**
  * サイト全体のメタデータ
@@ -53,7 +62,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ja">
+    <html lang="ja" className={NotoSerifJP.variable}>
       <body className="text-neutral-900">
         <ClientWrapper>
           <div className="flex min-h-screen flex-col">

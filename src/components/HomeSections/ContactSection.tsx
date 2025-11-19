@@ -31,7 +31,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   return (
     <section id="contact" className="relative mx-auto flex max-w-6xl flex-col gap-6 overflow-x-hidden px-4 py-8 md:px-10 md:py-12">
       <header className="">
-        <h2 className="font-semibold text-gray-200 text-5xl md:text-8xl lg:text-8xl">
+        <h2 className="font-semibold text-gray-700 text-5xl md:text-8xl lg:text-8xl">
           <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
             Contact.
           </TextAnimation>
@@ -50,12 +50,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           <table className="w-full table-fixed">
             <tbody>
               <tr className="border-b border-gray-600">
-                <td className="w-24 py-3 text-gray-200 text-sm md:w-32 md:text-base">会社名</td>
-                <td className="break-words py-3 text-gray-200 text-sm md:text-base">株式会社LiFe</td>
+                <td className="w-24 py-3 text-gray-900 text-sm md:w-32 md:text-base">会社名</td>
+                <td className="break-words py-3 text-gray-900 text-sm md:text-base">株式会社LiFe</td>
               </tr>
               <tr className="border-b border-gray-600">
-                <td className="w-24 py-3 text-gray-200 text-sm md:w-32 md:text-base">電話番号</td>
-                <td className="break-words py-3 text-gray-200 text-sm md:text-base">03-0000-0000（平日10:00〜18:00）</td>
+                <td className="w-24 py-3 text-gray-900 text-sm md:w-32 md:text-base">電話番号</td>
+                <td className="break-words py-3 text-gray-900 text-sm md:text-base">03-0000-0000（平日10:00〜18:00）</td>
               </tr>
             </tbody>
           </table>
@@ -65,7 +65,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
         <form onSubmit={onFormSubmit} className="w-full space-y-4">
           <div className="grid gap-4 md:grid-cols-2">
             <label className="flex flex-col gap-2 text-gray-200">
-              <span className="text-sm md:text-base">
+              <span className="text-gray-900 text-sm md:text-base">
                 お名前<span className="text-primary">*</span>
               </span>
               <input
@@ -79,7 +79,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               />
             </label>
             <label className="flex flex-col gap-2 text-gray-200">
-              <span className="text-sm md:text-base">
+              <span className="text-gray-900 text-sm md:text-base">
                 メールアドレス<span className="text-primary">*</span>
               </span>
               <input
@@ -94,7 +94,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
             </label>
           </div>
           <label className="flex flex-col gap-2 text-gray-200">
-            <span className="text-sm md:text-base">
+            <span className="text-gray-900 text-sm md:text-base">
               お問い合わせ詳細<span className="text-primary">*</span>
             </span>
             <textarea

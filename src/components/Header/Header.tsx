@@ -56,7 +56,7 @@ export const Header: React.FC<HeaderProps> = ({ companyName, logoUrl, menuItems 
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/40 bg-white/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b shadow-primary/30 backdrop-blur-md">
       <div className="relative flex h-20 items-center justify-between px-6">
       <h1 className="font-display text-lg font-semibold text-neutral-900 md:text-xl">
         <Link href="/" className="inline-flex items-center gap-2">

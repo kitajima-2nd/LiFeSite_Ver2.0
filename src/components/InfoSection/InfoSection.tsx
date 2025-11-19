@@ -30,7 +30,7 @@ export const InfoSection: React.FC<InfoSectionProps> = ({ title, subtitle, items
   return (
     <section className="relative mx-auto flex max-w-6xl flex-col gap-12 px-6 py-14 md:px-10 md:py-20">
       <header className="">
-        <h2 className="font-semibold text-gray-200 text-5xl md:text-8xl lg:text-8xl">
+        <h2 className="font-semibold text-gray-700 text-5xl md:text-8xl lg:text-8xl">
           <span className="inline-flex flex-wrap">
             <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
               {"What is "}
@@ -57,7 +57,7 @@ export const InfoSection: React.FC<InfoSectionProps> = ({ title, subtitle, items
       {/* コンテンツ部分 */}
       <div className="p-6 md:p-10">
         <div className="container flex flex-col-reverse items-start gap-6 md:flex-row">
-          <div className="flex-1 text-neutral-200 text-2xl bold" dangerouslySetInnerHTML={{ __html: items[0].description }} />
+          <div className="flex-1 text-gray-900 text-2xl bold" dangerouslySetInnerHTML={{ __html: items[0].description }} />
         </div>
       </div>
     </section>

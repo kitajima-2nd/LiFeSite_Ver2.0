@@ -57,7 +57,18 @@ export const InfoSection: React.FC<InfoSectionProps> = ({ title, subtitle, items
       {/* コンテンツ部分 */}
       <div className="p-6 md:p-10">
         <div className="container flex flex-col-reverse items-start gap-6 md:flex-row">
-          <div className="flex-1 text-gray-900 text-2xl bold" dangerouslySetInnerHTML={{ __html: items[0].description }} />
+          {/* <div className="flex-1 text-gray-900 text-2xl bold" dangerouslySetInnerHTML={{ __html: items[0].description }} /> */}
+          <p className="text-gray-900 text-sm">
+            私たちが向き合っているのは、<br />
+            プロダクトやサービスそのものではなく、その先にある<br />
+            <span className="text-primary font-bold text-base ">"人の人生の選択"</span> です。<br />
+            選ばれる理由も、頼られる理由も、すべては<br />
+            <em className="font-bold">「人生をより良い方向へ動かすため」</em>に存在するもの。<br />
+            だからこそLiFeという社名には、<br />
+            <span className='text-primary font-bold text-base'>「人生に深く関わる存在でありたい」</span><br />
+            という想いを込めています。
+          </p>
+
         </div>
       </div>
     </section>

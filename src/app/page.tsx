@@ -88,7 +88,8 @@ export default function HomePage() {
     <>
       {/* トップページのヒーローセクション */}
       <TopPage slides={slides} />
-
+      
+      {/* ここから下は画像挿入用　使わない場合は消す */}
       {/* InfoSection用の背景画像（画面全体の背景） */}
       {/* <SectionBackground
         opacity={sectionOpacities[0]}

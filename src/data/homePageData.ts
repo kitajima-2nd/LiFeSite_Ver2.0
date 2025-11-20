@@ -29,7 +29,7 @@ export const infoItems: InfoItem[] = [
   {
     id: 1,
     title: 'The core of LiFe .',
-    description: 'LiFeとは生活の中にあるすべてのものを指し、<br>我々は既存の価値観を破壊し、新しい価値を創造することを目指します。',
+    description: '私たちが向き合っているのは、<br>プロダクトやサービスそのものではなく、<br>その先にある“人の人生の選択”です。<br>選ばれる理由も、頼られる理由も、<br>すべては「人生をより良い方向へ動かすため」に存在するもの。<br>だからこそLiFeという社名には、<br>“人生に深く関わる存在でありたい”<br>という想いを込めています。',
     imageUrl: '/images/image1.png',
     linkUrl: '#',
   },

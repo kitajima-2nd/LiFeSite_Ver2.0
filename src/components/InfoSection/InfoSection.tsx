@@ -33,7 +33,7 @@ export const InfoSection: React.FC<InfoSectionProps> = ({ title, subtitle, items
       {/* 背景画像 */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <Image
-          src="/images/logo2.png"
+          src="/images/Logo2.png"
           alt="Background"
           fill
           className="object-cover"

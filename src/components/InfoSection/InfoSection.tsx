@@ -31,7 +31,7 @@ export const InfoSection: React.FC<InfoSectionProps> = ({ title, subtitle, items
   return (
     <section className="relative mx-auto flex max-w-6xl flex-col gap-10 px-1 py-14 md:px-4 md:py-20">
       {/* 背景画像 */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
+      {/* <div className="absolute inset-0 -z-10 overflow-hidden">
         <Image
           src="/images/Logo2.png"
           alt="Background"
@@ -41,9 +41,9 @@ export const InfoSection: React.FC<InfoSectionProps> = ({ title, subtitle, items
           priority={false}
           quality={90}
         />
-      </div>
+      </div> */}
       {/* オーバーレイ（テキストの可読性向上） */}
-      <div className="absolute inset-0 -z-10 bg-white/50" />
+      <div className="absolute inset-0 -z-10" />
       
       <header className="relative z-10">
         <h2 className="font-semibold text-gray-700 text-5xl md:text-8xl lg:text-8xl">

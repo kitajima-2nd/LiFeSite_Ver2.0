@@ -31,39 +31,36 @@ export const SectionBackground: React.FC<SectionBackgroundProps> = ({
   objectPosition = 'center top',
 }) => {
   return (
-    <div 
-      className="fixed inset-0 z-0" 
-      style={{
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        width: '100vw',
-        height: '100vh',
-        opacity,
-        transition: 'opacity 0.5s ease-in-out',
-        pointerEvents: 'none',
-      }}
-    >
-      {/* 背景画像 */}
-      <div className="absolute inset-0 w-full h-full">
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          fill
-          className="object-cover object-center"
-          style={{ objectPosition }}
-          sizes="100vw"
-          priority
-          quality={90}
-        />
-      </div>
-      {/* オーバーレイ（テキストの可読性向上） */}
+    <>
       <div 
-        className="absolute inset-0 backdrop-blur-sm" 
-        style={{ backgroundColor: `rgba(23, 23, 23, ${overlayOpacity})` }}
-      />
-    </div>
+        className="fixed inset-0 z-0" 
+        style={{
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          width: '100vw',
+          height: '100vh',
+          opacity,
+          transition: 'opacity 0.5s ease-in-out',
+          pointerEvents: 'none',
+        }}
+      >
+        {/* 背景画像 */}
+        <div className="absolute inset-0 w-full h-full opacity-30">
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            fill
+            className="object-cover object-center"
+            style={{ objectPosition }}
+            sizes="100vw"
+            priority
+            quality={90}
+          />
+        </div>
+      </div>
+    </>
   );
 };
 

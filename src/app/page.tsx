@@ -91,13 +91,13 @@ export default function HomePage() {
       
       {/* ここから下は画像挿入用　使わない場合は消す */}
       {/* InfoSection用の背景画像（画面全体の背景） */}
-      {/* <SectionBackground
+      <SectionBackground
         opacity={sectionOpacities[0]}
-        imageSrc="/images/image1.png"
+        imageSrc="/images/Logo2.png"
         imageAlt="Background image 1"
         overlayOpacity={0.3}
         objectPosition="center top"
-      /> */}
+      />
 
       {/* セクションマーカー（スクロール検出用、非表示） */}
       {/* 

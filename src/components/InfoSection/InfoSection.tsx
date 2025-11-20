@@ -16,6 +16,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { InfoItem } from '../../types';
 import { TextAnimation } from '../animation/TextAnimation';
 
@@ -28,8 +29,23 @@ interface InfoSectionProps {
 
 export const InfoSection: React.FC<InfoSectionProps> = ({ title, subtitle, items, isVisible }) => {
   return (
-    <section className="relative mx-auto flex max-w-6xl flex-col gap-12 px-6 py-14 md:px-10 md:py-20">
-      <header className="">
+    <section className="relative mx-auto flex max-w-6xl flex-col gap-10 px-1 py-14 md:px-4 md:py-20">
+      {/* 背景画像 */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <Image
+          src="/images/logo2.png"
+          alt="Background"
+          fill
+          className="object-cover"
+          sizes="100vw"
+          priority={false}
+          quality={90}
+        />
+      </div>
+      {/* オーバーレイ（テキストの可読性向上） */}
+      <div className="absolute inset-0 -z-10 bg-white/50" />
+      
+      <header className="relative z-10">
         <h2 className="font-semibold text-gray-700 text-5xl md:text-8xl lg:text-8xl">
           <span className="inline-flex flex-wrap">
             <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
@@ -55,7 +71,7 @@ export const InfoSection: React.FC<InfoSectionProps> = ({ title, subtitle, items
       </header>
 
       {/* コンテンツ部分 */}
-      <div className="p-6 md:p-10">
+      <div className="relative z-10 p-6 md:p-10">
         <div className="container flex flex-col-reverse items-start gap-6 md:flex-row">
           {/* <div className="flex-1 text-gray-900 text-2xl bold" dangerouslySetInnerHTML={{ __html: items[0].description }} /> */}
           <p className="text-gray-900 text-sm">

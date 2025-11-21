@@ -30,20 +30,6 @@ interface InfoSectionProps {
 export const InfoSection: React.FC<InfoSectionProps> = ({ title, subtitle, items, isVisible }) => {
   return (
     <section className="relative mx-auto flex max-w-6xl flex-col gap-10 px-1 py-14 md:px-4 md:py-20">
-      {/* 背景画像 */}
-      {/* <div className="absolute inset-0 -z-10 overflow-hidden">
-        <Image
-          src="/images/Logo2.png"
-          alt="Background"
-          fill
-          className="object-cover"
-          sizes="100vw"
-          priority={false}
-          quality={90}
-        />
-      </div> */}
-      {/* オーバーレイ（テキストの可読性向上） */}
-      <div className="absolute inset-0 -z-10" />
       
       <header className="relative z-10">
         <h2 className="font-semibold text-gray-700 text-5xl md:text-8xl lg:text-8xl">
@@ -74,14 +60,14 @@ export const InfoSection: React.FC<InfoSectionProps> = ({ title, subtitle, items
       <div className="relative z-10 p-6 md:p-10">
         <div className="container flex flex-col-reverse items-start gap-6 md:flex-row">
           {/* <div className="flex-1 text-gray-900 text-2xl bold" dangerouslySetInnerHTML={{ __html: items[0].description }} /> */}
-          <p className="text-gray-900 text-sm">
+          <p className="text-gray-900 text-sm md:text-base lg:text-lg">
             私たちが向き合っているのは、<br />
             プロダクトやサービスそのものではなく、その先にある<br />
-            <span className="text-primary font-bold text-base ">"人の人生の選択"</span> です。<br />
+            <span className="text-primary font-bold text-base md:text-xl lg:text-2xl">"人の人生の選択"</span> です。<br />
             選ばれる理由も、頼られる理由も、すべては<br />
             <em className="font-bold">「人生をより良い方向へ動かすため」</em>に存在するもの。<br />
             だからこそLiFeという社名には、<br />
-            <span className='text-primary font-bold text-base'>「人生に深く関わる存在でありたい」</span><br />
+            <span className='text-primary font-bold text-base md:text-xl lg:text-2xl'>「人生に深く関わる存在でありたい」</span><br />
             という想いを込めています。
           </p>
 

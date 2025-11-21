@@ -96,7 +96,7 @@ export default function HomePage() {
         imageSrc="/images/Logo2.png"
         imageAlt="Background image 1"
         overlayOpacity={0.3}
-        objectPosition="center top"
+        // objectPosition=""
       />
 
       {/* セクションマーカー（スクロール検出用、非表示） */}

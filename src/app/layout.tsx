@@ -21,11 +21,11 @@ import React from 'react';
 import { Noto_Serif_JP } from 'next/font/google';
 import './globals.css';
 
-import { Header } from '../components/Header/Header';
-import { Footer } from '../components/Footer/Footer';
-import { ScrollToTop } from '../components/ScrollToTop/ScrollToTop';
-import ClientWrapper from '../components/ClientWrapper';
-import { MenuItem } from '../types';
+import { Header, Footer } from '@/components/layout';
+import { ScrollToTop } from '@/components/ui/ScrollToTop';
+import ClientWrapper from '@/components/ClientWrapper';
+import { SITE_CONFIG } from '@/config/site';
+import { MENU_ITEMS } from '@/config/navigation';
 
 // フォントの設定
 const NotoSerifJP = Noto_Serif_JP({
@@ -40,21 +40,9 @@ const NotoSerifJP = Noto_Serif_JP({
  * SEO対策として、タイトルと説明を設定します
  */
 export const metadata: Metadata = {
-  title: '株式会社LiFe',
-  description: '株式会社LiFeのホームページ',
+  title: SITE_CONFIG.companyName,
+  description: `${SITE_CONFIG.companyName}のホームページ`,
 };
-
-/**
- * ナビゲーションメニューのアイテム定義
- * ヘッダーとフッターで使用されます
- */
-const menuItems: MenuItem[] = [
-  { label: 'HOME', path: '/' },
-  { label: 'SERVICE', path: '#service' },
-  { label: 'COMPANY', path: '#company' },
-  { label: 'NEWS', path: '#news' },
-  { label: 'CONTACT', path: '#contact' },
-];
 
 export default function RootLayout({
   children,
@@ -67,14 +55,14 @@ export default function RootLayout({
         <ClientWrapper>
           <div className="flex min-h-screen flex-col">
             <Header 
-              companyName="株式会社LiFe" 
-              logoUrl="/images/Logo_image.png" 
-              menuItems={menuItems} 
+              companyName={SITE_CONFIG.companyName}
+              logoUrl={SITE_CONFIG.logoUrl}
+              menuItems={MENU_ITEMS} 
             />
             <div className="flex-1">
               {children}
             </div>
-            <Footer companyName="株式会社LiFe" menuItems={menuItems} />
+            <Footer companyName={SITE_CONFIG.companyName} menuItems={MENU_ITEMS} />
           </div>
           <ScrollToTop />
         </ClientWrapper>

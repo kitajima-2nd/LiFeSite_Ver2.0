@@ -16,17 +16,17 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { NewsItem } from '../../types';
-import { TextAnimation } from '../animation/TextAnimation';
+import { NewsItem } from '@/types/home';
+import { TextAnimation } from '@/components/ui/TextAnimation';
 
 interface NewsSectionProps {
-  title: string;
-  subtitle?: string;
   newsItems: NewsItem[];
   isVisible?: boolean; // セクションが表示されているかどうか（固定ビューで使用）
 }
 
-export const NewsSection: React.FC<NewsSectionProps> = ({ title, subtitle, newsItems, isVisible }) => {
+export const NewsSection: React.FC<NewsSectionProps> = ({ newsItems, isVisible }) => {
+  const title = "What's New";
+  const subtitle = "お知らせ";
   return (
     <section id="news" className="relative mx-auto flex max-w-6xl flex-col gap-4 overflow-x-hidden px-4 py-7 md:px-10 md:py-20">
       <header className="mt-16 md:mt-24">

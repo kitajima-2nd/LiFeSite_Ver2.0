@@ -7,7 +7,7 @@
 'use client';
 
 import React from 'react';
-import { TextAnimation } from '../animation/TextAnimation';
+import { TextAnimation } from '@/components/ui/TextAnimation';
 
 interface CompanyDetail {
   label: string;

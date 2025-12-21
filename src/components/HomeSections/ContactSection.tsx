@@ -7,7 +7,7 @@
 'use client';
 
 import React from 'react';
-import { TextAnimation } from '../animation/TextAnimation';
+import { TextAnimation } from '@/components/ui/TextAnimation';
 
 interface ContactFormData {
   name: string;
@@ -55,7 +55,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               </tr>
               <tr className="border-b border-gray-600">
                 <td className="w-24 py-3 text-gray-900 text-sm md:w-32 md:text-base">電話番号</td>
-                <td className="break-words py-3 text-gray-900 text-sm md:text-base">03-0000-0000（平日10:00〜18:00）</td>
+                <td className="break-words py-3 text-gray-900 text-sm md:text-base">03-6820-7062（平日10:00〜18:00）</td>
               </tr>
             </tbody>
           </table>

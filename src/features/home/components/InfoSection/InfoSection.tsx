@@ -18,31 +18,30 @@ import { TextAnimation } from '@/components/ui/TextAnimation';
 
 interface InfoSectionProps {
   items: InfoItem[];
-  isVisible?: boolean;
 }
 
 const SUBTITLE = "  私たちについて .";
 
-export const InfoSection: React.FC<InfoSectionProps> = ({ items, isVisible }) => {
+export const InfoSection: React.FC<InfoSectionProps> = ({ items }) => {
   return (
     <section className="relative mx-auto flex max-w-6xl flex-col gap-10 px-1 py-14 md:px-4 md:py-20">
       <header className="relative z-10">
         <h2 className="font-semibold text-gray-700 text-5xl md:text-8xl lg:text-8xl">
           <span className="inline-flex flex-wrap">
-            <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
+            <TextAnimation isVisible={true} stagger={0.06} delay={0.05}>
               {"What is "}
             </TextAnimation>
-            <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05 + 8 * 0.06} className="text-primary">
+            <TextAnimation isVisible={true} stagger={0.06} delay={0.05 + 8 * 0.06} className="text-primary">
               {"LiFe"}
             </TextAnimation>
-            <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05 + (8 + 4) * 0.06}>
+            <TextAnimation isVisible={true} stagger={0.06} delay={0.05 + (8 + 4) * 0.06}>
               {" ."}
             </TextAnimation>
           </span>
         </h2>
         {SUBTITLE && (
           <p className=" text-xl md:text-2xl lg:text-3xl">
-            <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05} className="text-primary">
+            <TextAnimation isVisible={true} stagger={0.06} delay={0.05} className="text-primary">
               {SUBTITLE}
             </TextAnimation>
           </p>

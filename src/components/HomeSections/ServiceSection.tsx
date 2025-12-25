@@ -14,32 +14,31 @@ import { TextAnimation } from '@/components/ui/TextAnimation';
 
 interface ServiceSectionProps {
   serviceItems: ServiceItem[];
-  isVisible?: boolean; // セクションが表示されているかどうか（固定ビューで使用）
 }
 
-export const ServiceSection: React.FC<ServiceSectionProps> = ({ serviceItems, isVisible }) => {
+export const ServiceSection: React.FC<ServiceSectionProps> = ({ serviceItems }) => {
   return (
-    <section id="service" className="relative mx-auto flex max-w-6xl flex-col gap-12 px-6 py-14 md:px-10 md:py-20">
+    <section id="service" className="relative mx-auto flex max-w-6xl flex-col gap-10 px-1 py-14 md:px-4 md:py-20">
       <header className="">
         <h2 className="font-semibold text-gray-700 text-5xl md:text-8xl lg:text-8xl">
-          <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
+          <TextAnimation isVisible={true} stagger={0.06} delay={0.05}>
             Service.
           </TextAnimation>
         </h2>
         <p className="text-primary text-xl md:text-2xl lg:text-3xl">
-          <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
+          <TextAnimation isVisible={true} stagger={0.06} delay={0.05}>
             サービスのご案内
           </TextAnimation>
         </p>
       </header>
 
       {/* コンテンツエリア：カードタイプの事業説明 */}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
         {serviceItems.map((item) => (
           <Link
             key={item.id}
             href={item.linkUrl || '#'}
-            className="group flex flex-col overflow-hidden rounded-2xl border border-neutral-200/70 bg-white/95 shadow-lg shadow-primary/10 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/20"
+            className="overflow-hidden border border-neutral-200/70 bg-white/95 shadow-lg shadow-primary/10 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/20"
           >
             {/* 上部：画像 */}
             <div className="relative aspect-video w-full overflow-hidden">

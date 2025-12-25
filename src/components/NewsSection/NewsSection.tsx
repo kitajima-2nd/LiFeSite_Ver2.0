@@ -21,23 +21,22 @@ import { TextAnimation } from '@/components/ui/TextAnimation';
 
 interface NewsSectionProps {
   newsItems: NewsItem[];
-  isVisible?: boolean; // セクションが表示されているかどうか（固定ビューで使用）
 }
 
-export const NewsSection: React.FC<NewsSectionProps> = ({ newsItems, isVisible }) => {
+export const NewsSection: React.FC<NewsSectionProps> = ({ newsItems }) => {
   const title = "What's New";
   const subtitle = "お知らせ";
   return (
     <section id="news" className="relative mx-auto flex max-w-6xl flex-col gap-4 overflow-x-hidden px-4 py-7 md:px-10 md:py-20">
       <header className="mt-16 md:mt-24">
         <h2 className="font-semibold text-gray-700 text-5xl md:text-8xl lg:text-8xl">
-          <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
+          <TextAnimation isVisible={true} stagger={0.06} delay={0.05}>
             {title}
           </TextAnimation>
         </h2>
         {subtitle && (
           <p className="text-primary text-xl md:text-2xl lg:text-3xl">
-            <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
+            <TextAnimation isVisible={true} stagger={0.06} delay={0.05}>
               {subtitle}
             </TextAnimation>
           </p>

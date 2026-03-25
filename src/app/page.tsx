@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ホームページコンポーネント
  * 
  * このコンポーネントは、トップページのメインコンテンツを表示します。
@@ -8,18 +8,18 @@
  * - 各セクション（Information、Service、Company、Contact、News）の表示
  * 
  * アーキテクチャ：
- * - データは src/features/home/data/homeData.ts から取得
- * - 各セクションは個別のコンポーネントに分離
+ * - データは src/components/home/data/homeData.ts から取得
+ * - 各セクションは src/components/home/sections/ に配置
  */
 'use client';
 
 import React, { useState } from 'react';
-import { TopPage } from '@/components/layout';
-import { InfoSection } from '@/features/home/components/InfoSection';
-import { NewsSection } from '@/components/NewsSection/NewsSection';
-import { ServiceSection } from '@/components/HomeSections/ServiceSection';
-import { CompanySection } from '@/components/HomeSections/CompanySection';
-import { ContactSection } from '@/components/HomeSections/ContactSection';
+import { TopSection } from '@/components/home/TopSection';
+import { InfoSection } from '@/components/home/sections/InfoSection';
+import { NewsSection } from '@/components/home/sections/NewsSection';
+import { ServiceSection } from '@/components/home/sections/ServiceSection';
+import { CompanySection } from '@/components/home/sections/CompanySection';
+import { ContactSection } from '@/components/home/sections/ContactSection';
 import {
   slides,
   infoItems,
@@ -27,7 +27,7 @@ import {
   serviceItems,
   companyDetails,
   businessContents,
-} from '@/features/home/data/homeData';
+} from '@/components/home/data/homeData';
 
 export default function HomePage() {
   // お問い合わせフォームのデータを管理
@@ -61,7 +61,7 @@ export default function HomePage() {
   return (
     <>
       {/* トップページのヒーローセクション */}
-      <TopPage slides={slides} />
+      <TopSection slides={slides} />
       
       {/* メインコンテンツ：すべてのセクションを通常のスクロールフローで表示 */}
       <main className="flex flex-col">

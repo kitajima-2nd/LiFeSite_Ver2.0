@@ -1,2 +1,0 @@
-export { InfoSection } from './InfoSection';
-

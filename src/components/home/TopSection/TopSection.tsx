@@ -33,7 +33,7 @@ export const TopSection: React.FC<TopSectionProps> = ({ slides, interval = 4000 
   });
 
   return (
-    <aside className="relative min-h-screen w-screen overflow-hidden bg-neutral-900 text-white shadow-2xl shadow-primary/30">
+    <aside className="relative min-h-screen w-screen overflow-hidden bg-white text-gray-900 shadow-2xl shadow-primary/20">
       {slides.map((slide, index) => (
         <div
           key={slide.id}
@@ -53,11 +53,11 @@ export const TopSection: React.FC<TopSectionProps> = ({ slides, interval = 4000 
                 className="object-cover"
               />
             ) : null}
-            <div className="absolute inset-0 bg-neutral-900/60 backdrop-blur-sm" />
+            <div className="absolute inset-0 bg-white/10 backdrop-blur-m" />
           </div>
           <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center gap-6">
             <h1
-              className="text-white font-display text-3xl font-semibold leading-snug md:text-5xl"
+              className="text-gray-900 font-display text-3xl font-semibold leading-snug md:text-5xl"
               style={{
                 textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.3)'
               }}
@@ -65,7 +65,7 @@ export const TopSection: React.FC<TopSectionProps> = ({ slides, interval = 4000 
               {slide.title}
             </h1>
             <p
-              className="max-w-2xl text-base leading-relaxed text-white/80 md:text-lg"
+              className="max-w-2xl text-base leading-relaxed text-gray-700 md:text-lg"
               style={{
                 textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.3)'
               }}
@@ -74,7 +74,7 @@ export const TopSection: React.FC<TopSectionProps> = ({ slides, interval = 4000 
             {slide.linkUrl && (
               <a
                 href={slide.linkUrl}
-                className="inline-flex items-center rounded-full px-6 py-3 text-sm font-semibold text-white transition hover:bg-white animate-bounce-gentle"
+                className="inline-flex items-center rounded-full border border-gray-900 px-6 py-3 text-sm font-semibold text-gray-900 transition hover:bg-gray-900 hover:text-white animate-bounce-gentle"
               >
                 ↓SCROLL↓
               </a>
@@ -87,7 +87,7 @@ export const TopSection: React.FC<TopSectionProps> = ({ slides, interval = 4000 
           <span
             key={`indicator-${slide.id}`}
             className={`h-2 w-10 rounded-full transition ${
-              index === currentIndex ? 'bg-white' : 'bg-white/40'
+              index === currentIndex ? 'bg-gray-900' : 'bg-gray-900/40'
             }`}
           />
         ))}

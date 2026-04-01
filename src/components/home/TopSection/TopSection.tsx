@@ -53,7 +53,7 @@ export const TopSection: React.FC<TopSectionProps> = ({ slides, interval = 4000 
                 className="object-cover"
               />
             ) : null}
-            <div className="absolute inset-0 bg-white/10 backdrop-blur-sm" />
+            <div className="absolute inset-0 bg-white/5 backdrop-blur-sm" />
           </div>
           <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center gap-6">
             <h1

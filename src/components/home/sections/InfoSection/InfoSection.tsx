@@ -15,6 +15,7 @@ import React from 'react';
 import Image from 'next/image';
 import { InfoItem } from '@/types/home';
 import { TextAnimation } from '@/components/ui/TextAnimation';
+import { useSectionVisibility } from '@/lib/hooks';
 import * as THREE from "three"
 
 interface InfoSectionProps {
@@ -24,25 +25,27 @@ interface InfoSectionProps {
 const SUBTITLE = "  私たちについて .";
 
 export const InfoSection: React.FC<InfoSectionProps> = ({ items }) => {
+  const { sectionRef, isVisible } = useSectionVisibility(0.25);
+
   return (
-    <section className="relative mx-auto flex max-w-6xl flex-col gap-10 px-1 py-14 md:px-4 md:py-20">
+    <section ref={sectionRef} className="relative mx-auto flex max-w-6xl flex-col gap-10 px-1 py-14 md:px-4 md:py-20">
       <header className="relative z-10">
         <h2 className="font-semibold text-gray-700 text-5xl md:text-8xl lg:text-8xl">
           <span className="inline-flex flex-wrap">
-            <TextAnimation isVisible={true} stagger={0.06} delay={0.05}>
+            <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
               {"What is "}
             </TextAnimation>
-            <TextAnimation isVisible={true} stagger={0.06} delay={0.05 + 8 * 0.06} className="text-primary">
+            <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05 + 8 * 0.06} className="text-primary">
               {"LiFe"}
             </TextAnimation>
-            <TextAnimation isVisible={true} stagger={0.06} delay={0.05 + (8 + 4) * 0.06}>
+            <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05 + (8 + 4) * 0.06}>
               {" ."}
             </TextAnimation>
           </span>
         </h2>
         {SUBTITLE && (
           <p className=" text-xl md:text-2xl lg:text-3xl">
-            <TextAnimation isVisible={true} stagger={0.06} delay={0.05} className="text-primary">
+            <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05} className="text-primary">
               {SUBTITLE}
             </TextAnimation>
           </p>

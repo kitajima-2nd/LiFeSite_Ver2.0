@@ -11,22 +11,25 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ServiceItem } from '@/types/home';
 import { TextAnimation } from '@/components/ui/TextAnimation';
+import { useSectionVisibility } from '@/lib/hooks';
 
 interface ServiceSectionProps {
   serviceItems: ServiceItem[];
 }
 
 export const ServiceSection: React.FC<ServiceSectionProps> = ({ serviceItems }) => {
+  const { sectionRef, isVisible } = useSectionVisibility(0.25);
+
   return (
-    <section id="service" className="relative mx-auto flex max-w-6xl flex-col gap-10 px-1 py-14 md:px-4 md:py-20">
+    <section ref={sectionRef} id="service" className="relative mx-auto flex max-w-6xl flex-col gap-10 px-1 py-14 md:px-4 md:py-20">
       <header className="">
         <h2 className="font-semibold text-gray-700 text-5xl md:text-8xl lg:text-8xl">
-          <TextAnimation isVisible={true} stagger={0.06} delay={0.05}>
+          <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
             Service.
           </TextAnimation>
         </h2>
         <p className="text-primary text-xl md:text-2xl lg:text-3xl">
-          <TextAnimation isVisible={true} stagger={0.06} delay={0.05}>
+          <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
             サービスのご案内
           </TextAnimation>
         </p>

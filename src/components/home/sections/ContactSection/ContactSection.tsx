@@ -8,6 +8,7 @@
 
 import React from 'react';
 import { TextAnimation } from '@/components/ui/TextAnimation';
+import { useSectionVisibility } from '@/lib/hooks';
 
 interface ContactFormData {
   name: string;
@@ -26,16 +27,18 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   onFormChange,
   onFormSubmit,
 }) => {
+  const { sectionRef, isVisible } = useSectionVisibility(0.25);
+
   return (
-    <section id="contact" className="relative mx-auto flex max-w-6xl flex-col gap-6 overflow-x-hidden px-4 py-8 md:px-10 md:py-12">
+    <section ref={sectionRef} id="contact" className="relative mx-auto flex max-w-6xl flex-col gap-6 overflow-x-hidden px-4 py-8 md:px-10 md:py-12">
       <header className="">
         <h2 className="font-semibold text-gray-700 text-5xl md:text-8xl lg:text-8xl">
-          <TextAnimation isVisible={true} stagger={0.06} delay={0.05}>
+          <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
             Contact.
           </TextAnimation>
         </h2>
         <p className="text-primary text-xl md:text-2xl lg:text-3xl">
-          <TextAnimation isVisible={true} stagger={0.06} delay={0.05}>
+          <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
             お問い合わせ
           </TextAnimation>
         </p>

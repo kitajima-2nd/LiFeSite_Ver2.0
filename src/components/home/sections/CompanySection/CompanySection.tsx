@@ -8,6 +8,7 @@
 
 import React from 'react';
 import { TextAnimation } from '@/components/ui/TextAnimation';
+import { useSectionVisibility } from '@/lib/hooks';
 
 interface CompanyDetail {
   label: string;
@@ -23,21 +24,23 @@ export const CompanySection: React.FC<CompanySectionProps> = ({
   companyDetails,
   businessContents,
 }) => {
+  const { sectionRef, isVisible } = useSectionVisibility(0.25);
+
   // 所在地の住所を取得
   const address = companyDetails.find((detail) => detail.label === '所在地')?.value || '';
   // GoogleMapのURLを生成
   const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
 
   return (
-    <section id="company" className="relative mx-auto flex max-w-6xl flex-col gap-2 overflow-x-hidden px-1 py-14 md:px-10 md:py-20">
+    <section ref={sectionRef} id="company" className="relative mx-auto flex max-w-6xl flex-col gap-2 overflow-x-hidden px-1 py-14 md:px-10 md:py-20">
       <header className="">
         <h2 className="font-semibold text-gray-700 text-5xl md:text-8xl lg:text-8xl">
-          <TextAnimation isVisible={true} stagger={0.06} delay={0.05}>
+          <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
             Company.
           </TextAnimation>
         </h2>
         <p className="text-primary text-xl md:text-2xl lg:text-3xl">
-          <TextAnimation isVisible={true} stagger={0.06} delay={0.05}>
+          <TextAnimation isVisible={isVisible} stagger={0.06} delay={0.05}>
             会社概要
           </TextAnimation>
         </p>
